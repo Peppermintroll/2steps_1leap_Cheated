@@ -1,0 +1,113 @@
+title: Streetfighting
+new-page: true
+is-card: true
+on-arrival: streetfighting_timer = 6; month_actions += 1; rb_militarization_cost = 2 if rb_militancy > 0.1 else rb_militarization_cost = 1; rb_militarization_cost = 3 if rb_militancy > 0.25; strife += 1
+view-if: year >= 1930 and sa_strength >= 150 and streetfighting_timer == 0
+card-image: img/blutmai_2.jpg
+tags: party_affairs; antifascism
+
+= Streetfighting
+
+[? if rb_banned = 0: Battles rage on the streets between the Nazi SA, nationalist Stahlhelm, communist Rotfrontkämpferbund (RFB), and our own Reichsbanner. ?] [? if rb_banned = 0: Battles rage on the streets between the Nazi SA, nationalist Stahlhelm, and communist Rotfrontkämpferbund (RFB). Our own Reichbanner was banned and is no longer a part of this fight. ?] In some parts of the country, conditions are nearing civil war levels, as dozens of people are killed each month.
+
+We must do something to protect the workers against these predations.
+
+- @test_battle: Test our defense units in battle against the fascists!
+- @break_sa_rally: Send our strongest units to disrupt Nazi rallies!
+- @arm_rb: Increase training and armaments for the Reichsbanner.
+- @if_training: Train union members to fight as part of the Iron Front.
+- @prussian_police_training: Use the Prussian police to help train the Reichsbanner.
+- @military_training: Use our military connections to covertly arm the Reichsbanner.
+- @peace: Try to avoid all militant confrontations, as much as possible.
+- @truce_rfb: Try to make peace with the RFB.
+- @teamwork_rfb: Coordinate Reichbanner actions with the RFB.
+- @let_them_die
+- @easy_discard
+
+@test_battle
+view-if: rb_militancy > 0.1 and rb_militancy < 0.5 and rb_banned = 0
+on-arrival: rb_militancy += 0.1; sa_strength += 90; rb_strength -= 100; strife += 1; spd_hostile += 1
+max-visits: 1
+
+Many Reichsbanner members are not ready for actual fighting, and thus quit. However, the remainder are toughened as a result. Our confrontations also provide ample recruiting material for the Nazi SA.
+
+@break_sa_rally
+view-if: rb_militancy >= 0.5 and rb_banned = 0
+on-arrival: strife += 1; spd_hostile += 1; our_strength = rb_strength*rb_militancy*(1-dissent); enemy_strength = sa_strength*sa_militancy*0.8; prussian_police_loyalty -= 0.05; enemy_strength += prussian_police_strength*prussian_police_militancy*(1-prussian_police_loyalty) if (not spd_prussia); pacifism -= 1;
+go-to: break_rally_fail if our_strength < enemy_strength; break_rally_succeed if our_strength >= enemy_strength
+
+Our street troops disrupt a NSDAP rally to prevent the Nazis from meeting. The SA goons immediately wade into the fray. [? if spd_prussia: The police attempts to hold the two groups apart, with great resentment and little success. ?] [? if (not spd_prussia): The police has been deployed against the Reichsbanner. ?] 
+
+@break_rally_fail
+on-arrival: workers_nsdap += 3; old_middle_nsdap += 1; new_middle_nsdap += 1; unemployed_nsdap += 1; rb_strength -= 50; sa_strength += 50
+
+Unfortunately, the Reichsbanner was not able to overcome the SA mob. The Nazi meeting goes ahead as usual.
+
+@break_rally_succeed
+on_arrival: workers_nsdap -= 3; workers_spd += 3; sa_strength -= 20
+
+Our disruption is successful! The Nazis are cowed by our show of strength and flee the scene.
+
+@arm_rb
+view-if: rb_banned = 0
+subtitle: -[+ rb_militarization_cost +] resource
+choose-if: resources >= rb_militarization_cost
+unavailable-subtitle: Not enough resources ([+ rb_militarization_cost +] needed).
+on-arrival: resources -= rb_militarization_cost; rb_militancy += 0.06; rb_strength += 50; sa_strength += 50; z_relation -= 5 if historical_mode 
+
+We have increased training and purchased more armaments for the Reichsbanner.
+
+[? if historical_mode : The Center Party decries the militarization of the Reichsbanner, and its members are leaving the republican organization. ?]
+
+
+@if_training
+view-if: iron_front_formed == 1 and rb_banned = 0
+on-arrival: rb_militancy += 0.03; rb_strength += 200; sa_strength += 50; if_rb_team = 1;
+max-visits: 2
+
+As part of the Iron Front, we are increasing coordination between the Reichsbanner and the unions, and many union members want to become more involved.
+
+@prussian_police_training
+view-if: spd_prussia == 1 and prussian_police_loyalty > 0.5 and rb_banned = 0
+on-arrival: rb_militancy += (0.1*(prussian_police_loyalty)); sa_strength += 50; police_rb_train += 1; police_rb_team = 1; police_militancy += 0.05
+
+The Reichsbanner and the loyal sections of the Prussian police are learning to effectively fight alongside each other.
+
+@military_training
+view-if: (military_minister_party == "SPD") or president == "Braun" and rb_banned = 0
+choose-if: (reichswehr_loyalty >= 0.6 or corrupt_military >= 2)
+unavailable-subtitle: The military would rather shoot Reichsbanner members than help them. 
+on-arrival: rb_militancy += (0.1*(reichswehr_militancy)); reichswehr_loyalty -= 0.1; reichswehr_militancy *= 0.9; reichswehr_loyalty -= 0.1 if military_rearmed <= 0; reichswehr_loyalty -= 0.1 if corrupt_military >= 2; sa_strength += 50; military_rb += 1; kpd_relation -= 5; dvp_relation -= 5; z_relation -= 5; z_relation -= 5 if historical_mode; coalition_dissent += 1; kpd_coalition_dissent += 1; pro_republic -= 5; pacifism -= 3; coup_progress += 1; spd_total_corruption += 1; democratization -= 1;
+max-visits: 1
+
+Some of the military equipment [? if military_rearmed >= 1: from the ongoing rearmament ?][? if military_rearmed < 1: left over from the last war ?] has inexplicably vanished from Reichswehr storehouses and ended up in the hands of our activists. While our loyalists in Reichswehr turn a blind eye, everyone else decries our corruption and abuse of power.
+
+@peace
+view-if: rb_banned = 0
+on-arrival: rb_militancy -= 0.02; rb_strength -= 50; pacifism += 1; neorevisionist_dissent += 8; neorevisionist_strength -= 8
+
+By not fighting, the strength of the Reichsbanner atrophies. Pacifists in the party are gaining the upper hand.
+
+@truce_rfb
+choose-if: kpd_relation >= 45
+view-if: kpd_truce == 0 and rb_banned = 0
+unavailable-subtitle: The KPD is not interested.
+on-arrival: kpd_truce = 1; kpd_relation += 5; rfb_strength += 50; rb_strength += 50; sa_strength += 50;
+
+We have made at least a temporary truce with the KPD, so that our respective paramilitaries will stop fighting.
+
+@teamwork_rfb
+choose-if: kpd_relation >= 55
+view-if: kpd_truce == 1 and rfd_rb_team == 0 and rb_banned = 0
+unavailable-subtitle: The KPD is not interested.
+on-arrival: rfd_rb_team = 1; kpd_relation += 5; rfb_strength += 50; rb_strength += 50; sa_strength += 50;
+max-visits: 2
+
+We are coordinating with the KPD, so that our respective paramilitaries can occasionally fight alongside each other in the future.
+
+@let_them_die
+title: There is nothing we can do.
+view-if: rb_banned = 1
+on-arrival: workers_spd -= 5; unemployed_spd -= 5; workers_kpd += 2; workers_nsdap += 3; unemployed_kpd += 2; unemployed_nsdap += 3; strife += 1; sa_strength += 50; neorevisionist_dissent += 10; neorevisionist_strength += 5
+
+With the Reichsbanner banned, there is little we can do to stop the Nazis from killing us, our friends and our families. 
