@@ -1,0 +1,44 @@
+title: We can "arrest" Hitler for fabricated crimes.
+subtitle: And try to kill him in the process.
+unavailable-subtitle: [? if corrupt_judiciary == 0 : Unfortunately, we do not have a corrupt judge to rubberstamp the arrest warrant. ?] [? if (spd_prussia >= 0 and (corrupt_prussian_police < 1 and prussian_police_loyalty <= 0.8)) : We cannot do this without gaining extraordinary cooperation of the Prussian police. ?] [? if not spd_prussia : We cannot do this without the cooperation of the Prussian police, who are not currently in our control. ?] [? if (rb_militancy + prussian_police_militancy) < 1.3: Our units and the police don't have enough guns between them. ?]
+view-if: hitler_dead = 0 and attack_hitler_seen = 0 and hitler_deported = 0 and chancellor != "Papen" and chancellor != "Schleicher" and fabricate_far_right >= 1
+choose-if: corrupt_judiciary >= 1 and (corrupt_prussian_police >= 1 or prussian_police_loyalty >= 0.8) and spd_prussia == 1 and (rb_militancy + prussian_police_militancy) >= 1.3
+
+Is it really that simple? His supporters will react violently to this attempt, and we must be ready to respond in kind. And even if the attack does succeed, won't the truth behind the allegations come out eventually once our corrupt accomplices in the judiciary and police sell us out? Won't we be inviting bloody reprisals against our own leadership? And, almost all people consider this to be an anti-democratic abuse of power, abusing the law and order to kill a political opponent.
+
+- @attack_violence: Get him!
+- @no_attack: No, we must not.
+
+@attack_violence
+on-arrival: {!
+var total_allied_strength = Q.rb_strength*Q.rb_militancy + Q.prussian_police_strength*Q.prussian_police_militancy*Q.prussian_police_loyalty;
+var enemy_strength = Q.sa_strength*Q.sa_militancy;
+console.log('Attacking Hitler - force approach');
+console.log(total_allied_strength, enemy_strength);
+
+if (total_allied_strength > enemy_strength) {
+    Q.kill_success = 1;
+} else {
+    Q.kill_success = 0;
+}
+!}
+go-to: force_fail if kill_success == 0; force_kill if kill_success = 1
+
+When the police and the Reichsbanner approach, Hitler is surrounded by his SA guards, hellbent on preventing him from being arrested! We have no choice but to force a confrontation.
+
+@force_fail
+on-arrival: sa_strength += 50; workers_nsdap += 5; unemployed_nsdap += 5; new_middle_nsdap += 5; old_middle_nsdap += 5; rural_nsdap += 5; coup_progress += 3; attack_hitler_seen = 1; prussian_police_loyalty -= 0.2; coup_progress += 2
+
+Unfortunately, our forces fail to disloge the SA from their positions surrounding Hitler. He is seen as both a strong and powerful leader and a victim, further reinforcing his image. The Nazis are left stronger than ever.
+
+@force_kill
+on-arrival: hitler_dead = 1; sa_strength = sa_strength*0.7; rb_strength = rb_strength*0.9; prussian_police_strength = prussian_police_strength*0.9; strife += 2; coalition_dissent += 1; workers_nsdap -= 6; new_middle_nsdap -= 6; old_middle_nsdap -= 6; rural_nsdap -= 6; unemployed_nsdap -= 6; coup_progress += 4; nsdap_leader = "Goebbels"; prussian_police_loyalty -= 0.2; attack_hitler_seen = 1
+achievement: untergang
+
+Just as we intended, the confrontation escalates into an all-out firefight between the police, the Reichsbanner, and the right-wing militias. The final casualty count amounts to hundreds of wounded and dozens of fatalities, the latter including Hitler himself. The press blames the massacre on us, but perhaps this blood price will be enough to forestall worse massacres.
+
+Following Hitler's death, Joseph Goebbels has become the interim leader of the Nazi party, with substantial influence from Hermann Göring.
+
+@no_attack
+
+We need to make sure that we're ready because we will only get one shot at this. 

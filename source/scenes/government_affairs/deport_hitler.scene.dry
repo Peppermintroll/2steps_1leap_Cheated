@@ -1,0 +1,89 @@
+title: We can deport Hitler.
+subtitle: He is a foreign citizen and a criminal, after all.
+unavailable-subtitle: [? if judicial_reform < 2 : Unfortunately, the reactionary judiciary will not cooperate. ?] [? if presidential_election_seen == 1 : Hitler has already been made a citizen of Germany, in the run-up to the presidential election. ?] [? if not spd_prussia : We cannot do this without the cooperation of the Prussian police, who are not currently in our control. ?] [? if attack_hilter_seen: After our botched attempt, no judge will touch Hitler's case again. ?]
+view-if: nazi_urgency >= 3 and hitler_deported = 0 and chancellor != "Papen" and chancellor != "Schleicher" and investigate_far_right >= 2 and hitler_dead = 0
+choose-if: judicial_reform >= 2 and presidential_election_seen == 0 and spd_prussia == 1 and attack_hitler_seen == 0
+
+Is it really that simple? Won't his supporters react violently to this suggestion? And even if the deportation does succeed, won't he just re-enter the country, or perhaps organize from Austria? And, some people consider this to be an anti-democratic abuse of power, using the law in order to target a political opponent.
+
+- @deport: Deport him!
+- @no_deport: No, we must not.
+
+@deport
+go-to: deport_violence if sa_strength >= 200; deport_success if sa_strength < 200
+
+@deport_violence
+
+When the police approach, he is surrounded by his SA guards, preventing him from being extricated! We can attempt to force a confrontation, but that may have negative consequences. The Reichsbanner may also attempt to draw off the SA.
+
+- @force_approach: Force the approach!
+- @force_prejudice: Force the approach, with extreme prejudice!
+- @no_deport: Cancel the deportation.
+
+@force_approach
+on-arrival: {!
+var total_allied_strength = Q.rb_strength*Q.rb_militancy + Q.prussian_police_strength*Q.prussian_police_militancy*Q.prussian_police_loyalty;
+var enemy_strength = Q.sa_strength*Q.sa_militancy;
+var firepower = Q.rb_militancy + Q.sa_militancy + Q.prussian_police_militancy
+console.log('Deporting Hitler - force approach');
+console.log(total_allied_strength, enemy_strength);
+
+if (total_allied_strength > enemy_strength) {
+    Q.deportation_success = 1;
+} else {
+    Q.deportation_success = 0;
+}
+!}
+go-to: force_fail if deportation_success == 0 and firepower < 1.8; force_success if deportation_success = 1 and firepower < 1.8; force_kill if firepower >= 1.8
+
+@force_fail
+on-arrival: sa_strength += 50; workers_nsdap += 5; unemployed_nsdap += 5; new_middle_nsdap += 5; old_middle_nsdap += 5; rural_nsdap += 5; coup_progress += 3
+
+Unfortunately, our forces fail to disloge the SA from their positions surrounding Hitler. He is seen as both a strong and powerful leader and a victim, further reinforcing his image. The Nazis are left stronger than ever.
+
+@force_success
+on-arrival: hitler_deported = 1; sa_strength = sa_strength/2; workers_nsdap -= 10; new_middle_nsdap -= 10; old_middle_nsdap -= 10; rural_nsdap -= 10; unemployed_nsdap -= 10; sa_banned = 1; coup_progress -= 2; nsdap_leader = "Goebbels"; sa_ban_counter += 1
+achievement: deport_hitler
+
+The confrontation ends with the police and Reichsbanner prevailing, capturing Hitler so he can be deported! This is a sign of weakness, and his physical distance makes organizing difficult, impeding the Nazi effort to win more votes.
+
+In Hitler's absence, Joseph Goebbels has become the temporary leader of the Nazi party, with substantial influence from Hermann Göring.
+
+@force_kill
+on-arrival: hitler_dead = 1; sa_strength = sa_strength*0.7; rb_strength = rb_strength*0.9; prussian_police_strength = prussian_police_strength*0.9; strife += 2; coalition_dissent += 1; workers_nsdap -= 6; new_middle_nsdap -= 6; old_middle_nsdap -= 6; rural_nsdap -= 6; unemployed_nsdap -= 6; coup_progress += 4; nsdap_leader = "Goebbels"; prussian_police_loyalty -= 0.2
+achievement: untergang
+
+The confrontation escalates into an all-out firefight between the police, the Reichsbanner, and the right-wing militias. The final casualty count amounts to hundreds of wounded and dozens of fatalities, the latter including Hitler himself. The press blames the massacre on us, but perhaps this blood price will be enough to forestall worse massacres.
+
+Following Hitler's death, Joseph Goebbels has become the interim leader of the Nazi party, with substantial influence from Hermann Göring.
+
+@deport_success
+on-arrival: hitler_deported = 1; sa_strength = sa_strength/2; workers_nsdap -= 10; new_middle_nsdap -= 10; old_middle_nsdap -= 10; rural_nsdap -= 10; unemployed_nsdap -= 10; coup_progress -= 2; nsdap_leader = "Goebbels"
+achievement: deport_hitler
+
+Somehow, the plan worked! There was minimal resistance to Hitler's deportation. This is a sign of weakness, and his physical distance makes organizing difficult, impeding the Nazi effort to win more votes.
+
+In Hitler's absence, Joseph Goebbels has become the temporary leader of the Nazi party, with substantial influence from Hermann Göring.
+
+@force_prejudice
+choose-if: (rb_militancy + prussian_police_militancy) >= 1.4
+unavailable-subtitle: Our units and the police don't have enough guns between them.
+on-arrival: {!
+var total_allied_strength = Q.rb_strength*Q.rb_militancy + Q.prussian_police_strength*Q.prussian_police_militancy*Q.prussian_police_loyalty;
+var enemy_strength = Q.sa_strength*Q.sa_militancy;
+var firepower = Q.rb_militancy + Q.sa_militancy + Q.prussian_police_militancy
+console.log('Deporting Hitler - force approach');
+console.log(total_allied_strength, enemy_strength);
+
+if (total_allied_strength > enemy_strength) {
+    Q.deportation_success = 1;
+} else {
+    Q.deportation_success = 0;
+}
+!}
+go-to: force_fail if deportation_success == 0; force_kill if deportation_success = 1
+
+@no_deport
+go-to: root
+
+We will not be deporting Hitler.

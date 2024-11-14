@@ -1,0 +1,98 @@
+title: Internal Security
+new-page: true
+is-card: true
+tags: govt_affairs
+on-arrival: police_timer += 6; month_actions += 1
+view-if: spd_in_government = 1 and interior_minister_party = "SPD" and police_timer <= 0
+card-image: img/portraits/SeveringCarl.jpg
+
+= Internal Security
+
+The Interior Ministry controls internal security throughout the German Republic. While most police work is delegated to the states, the national security agency can perform special investigations.
+
+As with the state police units and the Reichswehr, the internal police tends to be reactionary, and has serious issues with loyalty to the elected government of the Republic.
+
+- @loyalty: Improve the loyalty of the Interior Ministry forces.
+- @corrupt_interior: Buy their loyalty through bribery and blackmail.
+- @investigate_corruption: Investigate corruption by big businesses.
+- @investigate_far_right: Investigate illegal activity among the far right.
+- @investigate_far_left: Investigate illegal activity among the far left.
+- @domestic_enemies: Investigate or ban our domestic enemies.
+- @deport_hitler
+- @attack_hitler
+- @fabricate_hitler: Fabricate a case against Hitler.
+- @root: Take no action for now.
+- @easy_discard
+
+@loyalty
+on-arrival: interior_police_loyalty += 0.1
+
+As with the Prussian state police, there are measures we can take to root out reactionary and anti-democratic sentiment in the police. We can improve training and recruiting procedures, and identify and remove known fascists and the like. [? if interior_police_loyalty >= 0.7: We can create internal affairs committees to root out right-wing informers. ?][? if interior_police_loyalty >= 0.8: Yet the eternal question continues to haunt us: who watches the watchmen? ?]
+
+Current interior police loyalty: [+ interior_police_loyalty : loyalty +]
+
+@corrupt_interior
+subtitle: -1 resources
+choose-if: resources > 0
+unavailable-subtitle: Not enough resources.
+on-arrival: interior_police_loyalty -= 0.1; corrupt_interior += 1; spd_total_corruption += 1
+
+The interior police already has its fair share of corruption, so adding some more is not difficult. Each officer with a gambling debt or a penchant for illicit vices is someone we can get into our pocket and promote into a higher rank. This makes us no friends among their colleagues, who resent being passed over for promotions in favor of our puppets.
+
+@investigate_corruption
+go-to: investigate_corruption_success if interior_police_loyalty >= 0.5; investigate_corruption_failure if interior_police_loyalty < 0.5
+
+@investigate_corruption_success
+on-arrival: investigate_corruption += 1; workers_spd += 5*(1-dissent); inflation -= 0.1 if inflation > 3; inflation -= 0.2 if inflation >= 8; new_middle_nsdap -= 3 if investigate_corruption == 2; old_middle_nsdap -= 3 if investigate_corruption == 2; judicial_reform += 1 if investigate_corruption == 3;
+
+Corruption in big business is rampant, of course. We have uncovered a number of scandals, and publicizing them brings new attention to the work of Interior Minister [+ interior_minister +], building up his popular appeal and that of the SPD. [? if investigate_corruption == 3 : The latest and biggest scandal involved a number of reactionary judges, who had to resign in exchange for clemency, making it easier for us to pass reforms. ?]
+
+@investigate_corruption_failure
+
+Unfortunately, our investigations have failed to turn up anything. Rumors are that the targets of our investigation were tipped off by infiltrators within the police.
+
+@investigate_far_right
+go-to: investigate_far_right_success if interior_police_loyalty >= 0.55; investigate_far_right_failure if interior_police_loyalty < 0.55
+
+@investigate_far_right_success
+on-arrival: investigate_far_right += 1; sa_strength -= 20; workers_nsdap -= 3; new_middle_nsdap -= 3; nazi_urgency += 1 if investigate_far_right == 2; nazi_urgency += 2 if investigate_far_right == 3; workers_nsdap -= 3 if investigate_far_right == 3; new_middle_nsdap -= 3 if investigate_far_right == 3; old_middle_nsdap -= 3 if investigate_far_right == 3; unemployed_nsdap -= 3 if investigate_far_right == 3; nazi_urgency += 2 if investigate_far_right == 4; coup_progress -= 1 if investigate_far_right == 4; rb_militancy += 0.2 if (investigate_far_right == 4 and kill_hitler == 0);
+
+[? if investigate_far_right == 1 : We have discovered collusion between Hjalmar Schacht, president of the Reichsbank, and the Nazis. This is very useful information. ?]
+[? if investigate_far_right == 2 : We have discovered illegal arms smuggling by the SA, the Nazi paramilitary. ?]
+[? if investigate_far_right == 3 : We have discovered a secret cache of documents from the NSDAP detailing their plan to violently take over the country if they enter into power. This is an anti-constitutional plot, and will be publicized and prosecuted. ?]
+[? if investigate_far_right == 4 : We have discovered a string of secret murders committed by Nazis. None of the victims match any records. ?]
+[? if investigate_far_right == 5 : We have further investigated the secret murders committed by Nazis. Allegedly, all of the victims were vigilantes who had tried to kill Hitler or were plotting to do so. ?][? if (investigate_far_right == 5 and kill_hitler == 0): Alas, none of them had succeeded, but we have learned much about the strengths and vulnerabilities of SA from their attempts. ?][? if (investigate_far_right == 5 and kill_hitler == 1) : Thankfully, we have succeeded where they had failed. ?]
+[? if investigate_far_right == 6 : We have researched the preparations done by the vigilantes who went after Hitler, and discovered that one of them had managed to place remotely activated microexplosives in Hitler's room, but was prevented from transmitting a sufficiently strong detonation signal. ?]
+[? if investigate_far_right > 6 : Of course the Nazis are doing crimes; everyone knows that. And some of those who know are trying to stop them. ?]
+
+[? if coup_progress >= 6: There are reports of an imminent coup by the far-right. We have attempted to disrupt some of these plans, but the threat is still present. ?]
+
+@investigate_far_right_failure
+
+Unfortunately, our investigations have failed to turn up anything. Rumors are that the targets of our investigation were tipped off by infiltrators within the police.
+
+@investigate_far_left
+go-to: investigate_far_left_falseflag if (interior_police_loyalty >= 0.6 and investigate_far_right >= 3); investigate_far_left_failure if interior_police_loyalty < 0.6; investigate_far_left_nothing if investigate_far_right < 3
+
+@investigate_far_left_falseflag
+on-arrival: reichstag_burn = 1; sa_strength -= 60; workers_nsdap -= 6; new_middle_nsdap -= 6; old_middle_nsdap -= 6; workers_kpd += 5; workers_spd += 3*(1-dissent); kpd_relation += 6; coup_progress -= 3 if coup_progress >= 3;
+
+By cross-referencing the police's findings with earlier investigations of the far right, we have uncovered a Nazi plot to burn down the Reichstag and frame the Communists for it! Thankfully, we have managed to foil their treacherous plot. Our allies in the KPD are grateful for the help, and agree to overlook the police intrusion in their affairs - this time.
+
+@investigate_far_left_failure
+
+Unfortunately, our investigations have failed to turn up anything. Rumors are that the targets of our investigation were tipped off by overly eager right-wing sympathizers within the police.
+
+@investigate_far_left_nothing
+
+Despite all our efforts, our investigations into the far left have failed to turn up anything conclusive so far. Perhaps we are looking at the problem from the wrong angle.
+
+@fabricate_hitler
+subtitle: -1 resources
+choose-if: resources > 0
+unavailable-subtitle: [? if resources < 1: Not enough resources. ?]
+view-if: hitler_deported = 0 and hitler_dead = 0 and fabricate_far_right = 0 and corrupt_interior >= 1
+on-arrival: resources -= 1; fabricate_far_right = 1
+
+Our corrupt investigators quickly fabricate a plausible criminal case against Hitler. Although it is unlikely to stand up to serious judicial scrutiny, it may suffice to obtain an arrest warrant from a cooperative judge.
+

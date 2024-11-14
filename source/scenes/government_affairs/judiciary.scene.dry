@@ -1,0 +1,51 @@
+title: Judiciary Reform
+new-page: true
+is-card: true
+view-if: spd_in_government = 1 and justice_minister_party = "SPD" and judiciary_timer = 0
+on-arrival: month_actions += 1; judiciary_timer += 6
+card-image: img/portraits/RadbruchGustav.jpg
+tags: govt_affairs
+
+= Judiciary Reform
+
+The Judiciary is one of the most reactionary components of the government, along with the military. Many jurists have held office since the days of the Emperor. They give violent fascists like Adolf Hitler laughably light sentences, while ruthlessly persecuting leftists and pacifists for lesser crimes. Others are mercenary opportunists whose loyalties are open to the highest bidder.
+
+[? if judicial_reform <= 0 : There is great demand in our membership for reforming the judiciary, although this may bring us into a collision course with our coalition allies. ?]
+[? if judicial_reform == 1 : We have started on the path to judicial reform. While some of the most antideluvian and biased justices have been replaced, many still remain. More should be done. ?]
+[? if judicial_reform >= 2 : We have successfully reformed the judiciary, to some extent. At the very least, the courts will not actively obstruct our attempts to prosecute crimes committed by the far-right. ?]
+
+[? if corrupt_judiciary <= 0: On the other hand, such rampant corruption represents a tempting opportunity. If justice is for sale, perhaps we could become its buyers. ?]
+[? if corrupt_judiciary == 1: We have bribed several judges to do our bidding. Their favorable decisions are unlikely to survive deep scrutiny, but we stand to gain in short term, at least. ?]
+[? if corrupt_judiciary >= 2: Our corruption of the judiciary is becoming an increasingly open secret. It is a matter of time before things come to a head. ?]
+
+- @reform: Carry out substantial judicial reforms.
+- @minor_reforms: Carry out minor judicial reforms.
+- @make_worse: Take advantage of rampant corruption.
+- @as_is: Leave the judiciary as it is.
+- @easy_discard
+
+@reform
+subtitle: -1 budget
+unavailable-subtitle: Not enough budget.
+choose-if: budget >= 1
+on-arrival: budget -= 1; democratization += 2; coalition_dissent += 1 if in_grand_coalition == 1; workers_spd += 5*(1-dissent) if democratization >= 3; judicial_reform += 2; pro_republic += 5*(1-dissent); coup_progress += 1; coalition_dissent += 1 if historical_mode; corrupt_judiciary_costs -= 1 if corrupt_judiciary_costs >= 1
+
+[? if corrupt_judiciary <= 0: We investigate jurists who have shown themselves to have biased or corrupt behavior, and try to remove them, replacing them with more democratically-oriented jurists. This obviously raises quite a great deal of ire in conservative circles, including within our coalition. ?]
+[? if corrupt_judiciary >= 1: We investigate jurists who have shown themselves to have biased or corrupt behavior, other than the ones that we have already bought out, and try to remove them, replacing them with those who are more democratically-oriented, or at least more loyal to us, and sending a clear message about the price of non-cooperation to the rest. This obviously raises quite a great deal of ire in conservative circles, including within our coalition. ?]
+
+@minor_reforms
+on-arrival: democratization += 1; workers_spd += 3*(1-dissent) if democratization >= 3; judicial_reform += 1; pro_republic += 3*(1-dissent); judiciary_timer += 6
+
+We try to remove the most obviously biased and corrupt jurists, while leaving most of the system intact. It is slow work reforming the judiciary.
+
+@make_worse
+subtitle: -1 resources
+unavailable-subtitle: Not enough resources ([+ corrupt_judiciary_costs +] needed).
+choose-if: resources >= corrupt_judiciary_costs
+on-arrival: resources -= corrupt_judiciary_costs; democratization -= 2; coalition_dissent -= 1 if (in_grand_coalition == 1 and coalition_dissent >= 1); pro_republic -= 4; coup_progress -= 0.5 if coup_progress >= 1; corrupt_judiciary += 1; spd_total_corruption += 1; corrupt_judiciary_costs += 1
+
+[? if corrupt_judiciary_costs <= 2: We investigate the most corrupt jurists and make discreet contributions to ensure that their rulings are favorable to us and our coalition allies. 
+[? if corrupt_judiciary_costs >= 3: We have already bought out the most corrupt jurists. The loyalties of the rest comes at an increasingly high price. ?]
+
+@as_is
+go-to: root
