@@ -1,0 +1,47 @@
+title: World War Two
+audio: music/communist/A_las_barricadas.ogg
+subtitle: So it has come to this...
+view-if: year = 1933 and month = 10 and world_war_two >= 5
+on_arrival: world_war_two = 1933
+max-visits: 1
+tags: event
+new-page: true
+
+= World War Two
+
+The Allied Powers had warned us that we had been blatantly violating the Treaty of Versailles, and now they are here to enforce it. Their armies have already occupied Rhineland and are pushing further into our territory. More worryingly, their navies have resumed maritime blockade, dooming our population to poverty and mass starvation. [? if panzerkreuzer_funded: Our vaunted battlecruise Panzerkreuzer A is sunk by a submarine attack in its first engagement. ?][? if panzerkreuzer_b_funded: Panzerkreuzer B is still under construction and of no use. ?][? if not (panzerkreuzer_funded or panzerkreuzer_b_funded): Since we had consistently refused to construct new battlecruisers, there is nothing we can do to stop them. ?]
+                                              
+The Allies demand our complete surrender and for our leadership to stand trial. What are we to do now?
+
+- @fight: We will fight.
+- @give_up: We will stand down and accept our fate.
+
+
+@fight
+
+Do we realize that this means another world war, against the full force of Europe and possibly more?
+
+- @war: Yes.
+- @give_up: Germany should not pay for our mistakes. We surrender.
+
+
+@war
+on-arrival: year = 1945; month = 5; world_war_two = 1945
+
+Cities burn. Tens of millions die. In the end, all of Germany is occupied and partitioned among the victors. Most socialists are swiftly tried and executed. Others flee the country and are hunted down for the rest of their lives.
+
+- @welp: Game over.
+                                                                                                                             
+
+@give_up
+
+Germany is occupied and partitioned among the victors. SPD leaders and many regular socialists are imprisoned or executed. Others flee the country and hide for the rest of their lives.
+
+- @welp: Game over.
+
+
+@welp
+subtitle: And no, there is no achievement for this. We do not reward failure.
+game-over: true
+
+This is the end. 

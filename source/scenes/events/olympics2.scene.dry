@@ -1,0 +1,41 @@
+title: The Games of the X Olympiad
+subtitle: May the best athletes triumph...
+view-if: year = 1932 and month = 8 and olympics_team >= 1 and olympics < 29
+max-visits: 1
+tags: event
+new-page: true
+
+= The 1932 Olympics
+
+The Games of the X Olympiad have started in Los Angeles. The German team is in attendance, [? if olympics_team == 1 : including our SPD comrades ?][? if olympics_team == 2 : composed many of our SPD comrades ?][? if olympics_team >= 3 : composed almost entirely of our SPD comrades ?]. The eyes of the world are upon them and, by extent, on us.
+
+- @bigwin: Wish them luck!
+- @midwin: Wish them luck!
+- @smallwin: Wish them luck!
+- @disaster: Wish them luck!
+
+@bigwin
+view-if: olympics_readiness >= 3
+on-arrival: olympics = 100; olympics_won += 2; left_dissent -= 6; labor_dissent -= 6; center_dissent -= 6; reformist_dissent -= 6; neorevisionist_dissent -= 6; olympics_won += 1 if olympics_team >= 2; coalition_dissent -= 1; workers_spd += 3*olympics_team*(1-dissent); old_middle_spd += 2*olympics_team*(1-dissent); new_middle_spd += 2*olympics_team*(1-dissent); rural_spd += 2*olympics_team*(1-dissent); coup_progress -= 1 if coup_progress > 1
+achievement: olympiasieger
+
+Our athletes are triumphant! As they step forward to receive their gold medals, they all speak out in support of socialism. Our popularity is greatly bolstered by this display of proletarian might on the world stage.
+
+@midwin
+view-if: olympics_readiness == 2 
+on-arrival: olympics_won += 1; left_dissent -= 3; labor_dissent -= 3; center_dissent -= 3; reformist_dissent -= 3; neorevisionist_dissent -= 3; workers_spd += 2*olympics_team*(1-dissent); old_middle_spd += olympics_team*(1-dissent); new_middle_spd += olympics_team*(1-dissent); rural_spd += olympics_team*(1-dissent)
+achievement: olympiasieger
+
+Our athletes make a strong showing. As they step forward to receive their silver and gold medals, they all speak out in support of socialism. Our popularity is buoyed by this display of proletarian strength on the world stage.
+
+@smallwin
+view-if: olympics_readiness == 1 
+on-arrival: olympics = 80; left_dissent -= 3; labor_dissent -= 3; center_dissent -= 3; reformist_dissent -= 3; neorevisionist_dissent -= 3; workers_spd += olympics_team*(1-dissent);
+
+Our athletes make a decent showing, getting a few bronze and silver medals. Our party members are happy for their success.
+ 
+@disaster
+view-if: olympics_readiness <= 0
+on-arrival: olympics_team = 0; olympics_readiness = 0; olympics_bribe = 0; left_dissent += 8; labor_dissent += 8; center_dissent += 8; reformist_dissent += 8; neorevisionist_dissent += 8; coalition_dissent += 1; workers_spd*= 0.9; new_middle_spd -= 4; old_middle_spd -= 4; unemployed_spd*=0.9; rural_spd -= 3; pro_republic -= 5; z_relation -= 5; dvp_relation -= 5; workers_nsdap += 5; unemployed_nsdap += 5; new_middle_nsdap += 5; old_middle_nsdap += 5; rural_nsdap += 5
+
+Our athletes make a particularly poor showing, leading to an inquiry as to how they made onto the national team in the first place. Our earlier meddling is exposed and the resulting scandal ruins the reputation of SPD athletes and leadership alike. We are denounced as a party of crooks and cheaters.

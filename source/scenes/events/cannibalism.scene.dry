@@ -1,0 +1,48 @@
+title: Today's Papers
+subtitle: The headline is troublesome...
+view-if: eat_the_rich >= 10 and rich_eaten = 0
+new-page: true
+max-visits: 1
+on-arrival: workers_spd*= 0.9; new_middle_spd -= 6; old_middle_spd -= 6; unemployed_spd*=0.9; pro_republic -= 10; rich_eaten = 1; z_relation -= 10; dvp_relation -= 10; ddp_relation -= 10; kpd_relation += 5; workers_nsdap += 5; unemployed_nsdap += 5; new_middle_nsdap += 15; old_middle_nsdap += 15; catholics_z += 15; catholics_spd -= 15 
+tags: event
+achievement: burgherburger
+
+= "WORKERS EAT BOSS!"
+
+Our rhetoric has finally borne fruit. Some of the desperate workers have broken into a factory owner's house, killed him in front of his family, and proceeded to mutilate and devour his body. By the time the police arrived, his remains were barely recognizable as human. Everyone blames us for this tragedy.  
+
+What can we do?
+
+- @devour
+- @propaganda
+- @condemn
+- @nothing
+
+@devour
+title: Empower workers to seize the factories - and their owners!
+unavailable-subtitle: [? if left_strength <= reformist_strength + neorevisionist_strength + 10 : The bulk of the party does not support this radical action. ?] [? if rb_militancy < 0.25 : If we increased the strength of our paramilitary forces, perhaps we could do this. ?]
+choose-if: left_strength > reformist_strength + neorevisionist_strength + 10 and rb_militancy >= 0.25
+on-arrival: nationalization_progress += 1; coup_progress += 6; unemployed -= 2; workers_spd += 10*(1-dissent); unemployed_spd += 10*(1-dissent); coalition_dissent += 3; kpd_coalition_dissent = 0; z_relation -= 10; dvp_relation -= 10; ddp_relation -= 10; kpd_relation += 15; workers_nsdap -= 8*(1-dissent); unemployed_nsdap -= 8*(1-dissent); left_strength += 15; reformist_dissent += 15; centrist_dissent += 10; left_dissent -= 10; factory_takeovers += 1; prussian_police_loyalty -= 0.2; new_middle_spd -= 10; old_middle_spd -= 10; catholic_strike += 6
+
+If the capitalists are going to take our food, then they must become our food. We have empowered the workers to kill and eat capitalists, and take full control of their factories. 
+
+@condemn
+title: Disavow all responsibility and condemn this atrocity.
+
+Few are convinced, given how consistently we have called for this very outcome.
+
+
+@propaganda
+title: Launch a propaganda campaign blaming the capitalists for the provocation.
+subtitle: -1 resources
+choose-if: (radio >= 2 or commercialized_media >= 3) and resources >= 1
+unavailable-subtitle: [? if radio < 2 and commercialized_media < 3 : We have not built up our media enough. ?] [? if resources < 1: We do not have enough resources. ?]
+on-arrival: workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent); pro_republic += 5*(1-dissent); resources -= 1
+
+We launch a propaganda campaign to blame the capitalists for the death of their own, using all of our media channels to do so. Even with our existing media framework, this is only mildly successful in directing the anger towards the capitalists and away from us.
+
+
+@nothing
+title: Accept responsibility.
+
+What else can we do? Nothing, that's what.
