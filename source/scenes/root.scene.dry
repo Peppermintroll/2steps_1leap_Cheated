@@ -73,6 +73,10 @@ Q.rb_ban_seen = 0;
 Q.nightmare = 0;
 Q.corrupt_judiciary_costs = 1;
 Q.criminal_takeover = 0;
+Q.anti_women_seen = 0;
+Q.anti_labor_seen = 0;
+Q.pro_tariffs_seen = 0;
+Q.hitler_return = 0;
 
 Q.strike_term_seen = 0;
 // 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
