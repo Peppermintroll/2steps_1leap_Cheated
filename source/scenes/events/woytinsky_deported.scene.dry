@@ -1,5 +1,5 @@
 title: Wladimir Woytinsky deported
-view-if: nightmare >= 0 and year >= 1929 and month >= 2 and interior_minister_party != "SPD" and judicial_reform <= 0
+view-if: nightmare >= 1 and year >= 1929 and month >= 2 and interior_minister_party != "SPD" and judicial_reform <= 0
 frequency: 1000
 max-visits: 1
 on-arrival: woytinsky_deported = 0; n_advisors -= 1 if woytinsky_advisor == 1; woytinsky_advisor = 0
