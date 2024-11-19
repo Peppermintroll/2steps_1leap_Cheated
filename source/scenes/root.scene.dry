@@ -29,7 +29,6 @@ Q.month_actions = 0;
 //Unimplemented Mod Stuff
 Q.infodump = 0;
 Q.catholic_strike = 0;
-Q.privatize_welfare = 0;
 Q.disband_police = 0;
 Q.spd_hostile = 0;
 Q.bans_banned = 0;
@@ -77,6 +76,8 @@ Q.anti_women_seen = 0;
 Q.anti_labor_seen = 0;
 Q.pro_tariffs_seen = 0;
 Q.hitler_return = 0;
+Q.hitler_comeback_timer = 0;
+Q.privatize_welfare = 0;
 
 Q.strike_term_seen = 0;
 // 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
@@ -514,7 +515,7 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
             'constitutional_reform', 'pro_tariffs', 
             // events
             'emergency_cuts', 'unemployment_insurance',
-            'sa_ban', 'sh_ban', 'papen_chancellor',
+            'sa_ban', 'sh_ban', 'papen_chancellor', 'hitler_comeback', 
             'kpd_policy', 'kpd_ultimatum', 'popular_front_dispute',
             'high_inflation', 'banking_crisis', 'meme_collapse'];
 Q.advisor_action_timer = 0;
