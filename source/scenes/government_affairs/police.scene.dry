@@ -89,8 +89,8 @@ Despite all our efforts, our investigations into the far left have failed to tur
 
 @fabricate_hitler
 subtitle: -1 resources
-choose-if: resources > 0
-unavailable-subtitle: [? if resources < 1: Not enough resources. ?]
+choose-if: resources > 0 and hitler_return == 0
+unavailable-subtitle: [? if resources < 1: Not enough resources. ?] [? if hitler_return >= 1 : Hitler has diplomatic immunity. ?]
 view-if: hitler_deported = 0 and hitler_dead = 0 and fabricate_far_right = 0 and corrupt_interior >= 1
 on-arrival: resources -= 1; fabricate_far_right = 1
 
