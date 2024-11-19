@@ -37,7 +37,7 @@ on-arrival: nationalism -= 4; pro_republic += 3; strife += 1
 
 Under the protection of the police, the people are allowed to watch the film in peace. Nazi disturbances are kept to a minimum.
 
-@allow_fail:
+@allow_fail
 view-if: (prussian_police_loyalty < 0.65 and corrupt_prussian_police < 1)
 on-arrival: nationalism += 4; old_middle_nsdap += 5; new_middle_nsdap += 5; workers_nsdap += 3; sa_strength += 25; pro_republic -= 4; strife += 1; neorevisionist_dissent += 15
 
