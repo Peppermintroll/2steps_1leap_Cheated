@@ -83,7 +83,7 @@ We also mention the KPD in our conversations with the Soviet ambassador. They cl
 
 @wittorf
 view-if: wittorf_secret = 1 and ((year = 1929 and month < 6) or year = 1928) and wittorf_soviet_union = 0
-choose-if: historical_mode = 0
+choose-if: historical_mode = 0 and nightmare = 0
 unavailable-subtitle: It is impossible that Stalin and the Comintern could be moved on their policy.
 on-arrival: wittorf_soviet_union = 1; kpd_relation += 6*(1-dissent); kpd_foreign_seen = 1
 max-visits: 1
@@ -136,13 +136,34 @@ This has reduced tensions within our government, and our party has gotten credit
 
 @expose
 title: Expose the secret rearmament plans of the previous foreign ministry!
-view-if: rearmament_exposed == 0
+view-if: rearmament_exposed == 0 and nightmare == 0
 on-arrival: west_relation += 2; east_relation += 1; nationalism -= 5*(1-dissent); pro_republic += 5*(1-dissent); coalition_dissent += 1; rearmament_exposed += 1; reparations_negotiation += 3; coup_progress += 2
 
 The previous foreign ministry, despite its benevolent and peaceful face, was secretly helping the Reichswehr to build up its forces, in contravention of the Treaty of Versailles.
 
 The Allies are grateful of our exposure and repudiation of militarism. Our partners in the coalition are less supportive.
 
+@expose_nm
+title: Expose the secret rearmament plans of the previous foreign ministry!
+view-if: rearmament_exposed == 0 and nightmare >= 0
+on-arrival: west_relation += 2; east_relation += 1; nationalism -= 5*(1-dissent); pro_republic += 5*(1-dissent); coalition_dissent += 1; rearmament_exposed += 1; reparations_negotiation += 3; coup_progress += 2
+
+The previous foreign ministry, despite its benevolent and peaceful face, was secretly helping the Reichswehr to build up its forces, in contravention of the Treaty of Versailles.
+
+While Allies are grateful of our exposure, they are suspicious of our motives and request to station international observers throughout Reichswehr to safeguard against further backsliding into militarism. 
+
+- @allow_observers: Agree to observers, despite strenous objections of other parties.
+- @deny_observers: That is a step too far.
+
+@allow_observers
+on-arrival: coalition_dissent += 2; coup_progress += 2
+
+The Allies appreciate our cooperation. Our partners in the coalition declare us traitors to the nation.
+
+@deny_observers:
+on-arrival: west_relation -= 1; reparations_negotiation -= 1
+
+The Allies are disappointed by our refusal.
 
 @economic_conference
 title: Organize an international economic conference to deal with the Depression.
