@@ -18,15 +18,35 @@ Of course, this criticism is unfounded, but the bourgeois establishment does not
 
 @expose_him
 view-if: investigate_far_right >= 1
+go-to: expose_ok if nightmare = 0; expose_fail if nightmare >= 1
 
-We expose to the public Schacht's dealings with the Nazis. For better or worse, he is cowed, and refrains from taking further actions against us.
+We expose to the public Schacht's dealings with the Nazis. 
 
+@expose_ok
+
+For better or worse, he is cowed, and refrains from taking further actions against us.
+
+@expose_fail
+
+Unfortunately, Schacht is not cowed by our attack. Worse yet, President Hindenburg is critical of our allegations and sides with Schacht.
+
+- @hilferding_resign: Hilferding must resign.
 
 @threaten_him
 view-if: corrupt_interior >= 1
+go-to: threaten_ok if nightmare = 0; threaten_fail if nightmare >= 1
 
-Our loyalists in the police leak to Schacht that he is under investigation for bribery and embezzlement. They offer to make it all go away if he refrains from taking further actions against us. For better or worse, he does exactly that, so perhaps our insinuations were not that far off the mark.
+Our loyalists in the police leak to Schacht that he is under investigation for bribery and embezzlement. They offer to make it all go away if he refrains from taking further actions against us. 
 
+@threaten_ok
+
+For better or worse, he does exactly that, so perhaps our insinuations were not that far off the mark.
+
+@expose_fail
+
+Unfortunately, Schacht is not cowed by our attack. Apparently he has his own sources in the police and powerful patrons to protect him.
+
+- @hilferding_resign: Hilferding must resign.
 
 @work_with
 
