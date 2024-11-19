@@ -1,0 +1,6 @@
+title: Hitler returns from Austria
+view-if: hitler_deported == 1 and hitler_comeback_timer == 0 and nightmare >= 1
+on-arrival: hitler_deported = 0; sa_strength += 100; sa_militancy += 0.04; hitler_return = 1; nsdap_leader = "Hitler"
+tags: event
+
+Hitler has returned to Germany, ostensibly as minor attache of the Austrian embassy. Now that he is protected by diplomatic immunity, he immediately assumes the leadership of Nazis and continues his campaign of hatred.
