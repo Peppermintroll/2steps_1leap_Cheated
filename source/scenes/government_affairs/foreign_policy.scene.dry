@@ -160,7 +160,7 @@ on-arrival: coalition_dissent += 2; coup_progress += 2
 
 The Allies appreciate our cooperation. Our partners in the coalition declare us traitors to the nation.
 
-@deny_observers:
+@deny_observers
 on-arrival: west_relation -= 1; reparations_negotiation -= 1
 
 The Allies are disappointed by our refusal.
