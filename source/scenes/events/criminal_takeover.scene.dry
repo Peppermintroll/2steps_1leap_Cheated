@@ -1,6 +1,6 @@
 title: Criminal Takeover
 subtitle: Germany's economy falls to organized crime...
-view-if: (unemployed >= 69 and nightmare = 0) or (unemployed >= 40 and nightmare >= 1)
+view-if: ((unemployed >= 69 and nightmare = 0) or (unemployed >= 40 and nightmare >= 1))
 new-page: true
 max-visits: 1
 on-arrival: unemployed_spd*= 0.6; unemployed_kpd += 5; unemployed_z*=0.8; unemployed_ddp*=0.8; unemployed_dvp*=0.8; unemployed_dnvp += 5; unemployed_nsdap += 12; pro_republic -= 15; criminal_takeover = 1; z_relation -= 8; dvp_relation -= 6; sa_strength += 150; prussian_police_strength*= 0.6
