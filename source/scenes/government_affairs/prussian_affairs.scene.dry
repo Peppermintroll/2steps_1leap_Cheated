@@ -59,7 +59,7 @@ The Reichsbanner and the loyal sections of the Prussian police are learning to e
 @arm_police
 choose-if: budget >= 1 and finance_minister_party == "SPD"
 unavailable-subtitle: [? if budget < 1: Not enough budget. ?] [? if finance_minister_party != "SPD": We need control of the Finance Ministry to perform a budget transfer to Prussia. ?]
-on_arrival: budget -= 1; prussian_police_loyalty += 0.1; coalition_dissent += 0.5; kpd_coalition_dissent += 1; prussian_police_militancy += 0.2; prussian_police_strength += 50; capital_strike += 0.25; coup_progress += 0.5
+on_arrival: budget -= 1; prussian_police_loyalty += 0.1; kpd_coalition_dissent += 1; prussian_police_militancy += 0.2; prussian_police_strength += 50; coup_progress += 1
 
 The Prussian police now has more guns and more boots on the ground, and the rest of Germany is paying for it.
 
