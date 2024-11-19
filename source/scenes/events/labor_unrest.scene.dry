@@ -27,7 +27,7 @@ view-if: nightmare >= 1
 subtitle: This will alienate the bourgeoisie.
 on-arrival: labor_dissent += 8; left_dissent += 8; workers_spd -= 6; workers_kpd += 5; kpd_coalition_dissent += 1; kpd_relation -= 8; capital_strike_progress -= 1 if capital_strike_progress > 1
 
-Unfortunately, Labor Minister [+ labor_minister +] of the [+ labor_minister_party +] overrides us and sides with the employers instead.
+Unfortunately, Labor Minister [+ labor_minister +] ([+ labor_minister_party +]) overrides us and sides with the employers instead.
 
 Even though most workers grudgingly accept that our hands were tied, there is deep bitterness developing against the SPD, especially among the more radical workers. The Communists stand to gain.
 
