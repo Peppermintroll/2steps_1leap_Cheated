@@ -2,7 +2,7 @@ title: Wladimir Woytinsky deported
 view-if: nightmare >= 1 and year >= 1929 and month >= 2 and interior_minister_party != "SPD" and judicial_reform <= 0
 frequency: 1000
 max-visits: 1
-on-arrival: woytinsky_deported = 0; n_advisors -= 1 if woytinsky_advisor == 1; woytinsky_advisor = 0
+on-arrival: woytinsky_deported = 1; n_advisors -= 1 if woytinsky_advisor == 1; woytinsky_advisor = 0
 tags: event, nightmare_only
 
 Wladimir Woytinsky, a luminary of the labor wing of our party, was arrested on dubious charges of financial fraud. Due to alleged irregularities on his immigration forms, the reactionary judges ordered his deportation to the Soviet Union. He will be missed.
