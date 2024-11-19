@@ -688,9 +688,7 @@ on-arrival: difficulty = 1; resources = 0; dues = 1; rb_strength = 1000; reformi
 go-to: 1928_main
 
 @1928_nightmare
-subtitle: [? if infodump >= 1 : No resources, no fundraising, everyone hates you. ?] Don't do this.
-unavailable-subtitle: Soon.
-choose-if: year == 2025
+subtitle: [? if infodump >= 1 : No resources, no fundraising, everyone hates you. ?] **Don't do this.** 
 on-arrival: {!
 Q.difficulty = 2;
 Q.resources = 0;
@@ -698,14 +696,14 @@ Q.dues = 0;
 Q.unemployed += 3;
 Q.inflation -= 1;
 Q.rb_strength = 600;
-Q.reformist_dissent = 48;
-Q.left_dissent = 48;
-Q.labor_dissent = 48;
-Q.center_dissent = 45;
-Q.z_relation = 26;
-Q.kpd_relation = 11;
-Q.dvp_relation = 26;
-Q.ddp_relation = 26;
+Q.reformist_dissent = 40;
+Q.left_dissent = 40;
+Q.labor_dissent = 40;
+Q.center_dissent = 40;
+Q.z_relation = 30;
+Q.kpd_relation = 13;
+Q.dvp_relation = 25;
+Q.ddp_relation = 25;
 Q.budget = 0;
 Q.new_middle_nsdap += 15;
 Q.old_middle_nsdap += 15;
@@ -716,12 +714,16 @@ Q.old_middle_other += 5;
 Q.rural_other += 5;
 Q.workers_other += 5;
 Q.workers_kpd += 5;
-Q.sa_strength += 99;
-Q.sh_strength += 150;
+Q.sa_strength += 88;
+Q.sh_strength += 140;
 Q.rural_dnvp += 15;
 Q.rural_nsdap += 10;
 Q.unemployed_nsdap += 18;
 Q.nightmare = 1;
+Q.wtb_support = -1;
+Q.peoples_party_support = -1;
+Q.nationalization_support = -1;
+Q.moderate_plan_support = -1;
 !}
 go-to: 1928_main
 
