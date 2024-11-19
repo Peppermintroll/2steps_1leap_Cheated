@@ -406,7 +406,7 @@ go-to: hindenburg_wins if hindenburg_plurality == 1; thalmann_wins if thalmann_p
 
 
 @hindenburg_wins
-on-arrival: president = "Hindenburg"
+on-arrival: president = "Hindenburg"; judicial_reform -= 1 if (nightmare >= 1 and judicial_reform >= 1)
 
 As expected, the incumbent Hindenburg wins the presidency. Let's hope he continues to keep the Nazis out of power.
 
