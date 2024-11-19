@@ -1,0 +1,8 @@
+title: Reichsbanner banned by reactionary judges!
+view-if: rb_banned == 0 and judicial_reform <= 0 and year >= 1932 and rb_ban_seen == 0 and justice_minister_party != "SPD"
+on-arrival: rb_strength *= 0.5; rb_militancy -= 0.1; workers_spd -= 6; unemployed_spd -= 6; z_relation -= 5; dvp_relation -= 5; kpd_relation -= 2; workers_kpd -= 2; unemployed_kpd -= 2; pro_republic -= 8; workers_nsdap += 8; unemployed_nsdap += 8; rb_banned = 1; prussian_police_loyalty -= 0.1; interior_police_loyalty -= 0.1; rb_ban_seen += 1
+achievement: eher_wie_das_reichsbanned
+max-visits: 1
+tags: event, nightmare_only
+
+The ban deals a grievous blow to Reichsbanner. Although we can still organize illegally, most of our members abide by the law. The Nazis take this as one more reason why the Socialists are enemies of the nation.
