@@ -632,7 +632,7 @@ How transparent and flexible should your choices and consequences be?
 
 - @normal_info: Normal (same as base game)
 - @limit_info: Limited (same as historical mode)
-- @more_info: Augmented (extra feedback)
+#- @more_info: Augmented (extra feedback)
 
 @normal_info
 on-arrival: infodump = 0;
