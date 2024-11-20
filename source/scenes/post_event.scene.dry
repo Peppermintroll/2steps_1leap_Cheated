@@ -17,6 +17,9 @@ Q.socialism = Math.round(Q.socialism);
 if (Q.pro_republic < 0) {
     Q.pro_republic = 0;
 }
+if (Q.rb_strength < 0) {
+    Q.rb_strength = 0;
+}
 if (Q.pro_republic >= 100) {
     Q.pro_republic = 99;
 }
