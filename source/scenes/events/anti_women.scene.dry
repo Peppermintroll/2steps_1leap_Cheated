@@ -3,7 +3,7 @@ tags: event, govt_affairs, nightmare_only
 is-card: true
 on-arrival: anti_women_timer += 11; anti_women_seen += 1
 card-image: img/portraits/PfülfAntonie.jpg
-view-if: womens_rights >= 1 and year >= 1929 and month >= 8 and anti_women_timer <= 0 and spd_in_government = 1 and in_spd_majority = 0 and nightmare >= 1
+view-if: womens_rights >= 1 and year >= 1929 and month >= 8 and anti_women_timer <= 0 and spd_in_government = 1 and in_spd_majority = 0 and nightmare >= 1 and women_left_spd = 0
 new-page: true
 
 = Women's rights in peril
@@ -14,7 +14,7 @@ new-page: true
 - @vote_no: Stand firm by our earlier reforms.
 
 @vote_yes
-on-arrival: womens_rights = 0; womens_work = 0; family_law = 0; abortion_rights = 0; left_dissent += 10; labor_dissent += 10; center_dissent += 10; reformist_dissent += 10; neorevisionist_dissent += 10; kpd_coalition_dissent += 1; kpd_relation -= 8; workers_spd -= 8; new_middle_spd -= 8
+on-arrival: womens_rights = 0; womens_work = 0; family_law = 0; abortion_rights = 0; left_dissent += 15; labor_dissent += 15; center_dissent += 15; reformist_dissent += 15; neorevisionist_dissent += 15; kpd_coalition_dissent += 1; kpd_relation -= 8; workers_spd -= 8; new_middle_spd -= 8; women_betrayed += 1
 
 The women of Germany are shocked by our betrayal! Many of our grassroots members have become disillusioned by the party, and some party branches have begun agitating against the cabinet. 
 
