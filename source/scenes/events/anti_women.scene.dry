@@ -1,7 +1,7 @@
 title: Backlash against women's rights
 tags: event, govt_affairs, nightmare_only
 is-card: true
-on-arrival: anti_women_timer += 13; anti_women_seen += 1
+on-arrival: anti_women_timer += 11; anti_women_seen += 1
 card-image: img/portraits/PfülfAntonie.jpg
 view-if: womens_rights >= 1 and year >= 1929 and month >= 8 and anti_women_timer <= 0 and spd_in_government = 1 and in_spd_majority = 0 and nightmare >= 1
 new-page: true
