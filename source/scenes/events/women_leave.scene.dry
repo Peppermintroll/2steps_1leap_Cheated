@@ -1,0 +1,11 @@
+title: Women leave the SPD
+new-page: true 
+subtitle: Or perhaps it was SPD that had abandoned the women?
+tags: event
+view-if: women_betrayed >= 2
+on-arrival: women_left_spd = 1; workers_spd *= 0.6; unemployed_spd *= 0.6; new_middle_spd *= 0.6; rural_spd *= 0.6; old_middle_spd *= 0.6; workers_other += 10; workers_kpd += 10; n_advisors -= 1 if juchacz_advisor == 1; juchacz_advisor = 0; kpd_relation -= 8; n_advisors -= 1 if sender_advisor == 1; sender_advisor = 0; n_advisors -= 1 if pfulf_advisor == 1; pfulf_advisor = 0;
+max-visits: 1
+
+= Women leave the SPD
+
+Our capitulation to right-wing demands and repeated failures to protect women's rights have greatly offended the working women, and many of them have chosen to abandon the movement that has abandoned them. They constituted a significant part of our membership, and it is unclear whether this is survivable.
