@@ -675,7 +675,7 @@ on-arrival: difficulty = -1; resources = 99; dues = 4; budget = 99; rb_strength 
 go-to: 1928_main
 
 @1928_easy
-subtitle: [? if infodump >= 1 : More resources, good relations, free leadership changes. ?]
+subtitle: [? if infodump >= 1 : More resources, good relations, free leadership changes. ?] Recommended for exploring new content.
 on-arrival: difficulty = -1; resources = 4; dues = 3; rb_strength = 2500; kpd_relation = 29; z_relation = 54; dvp_relation = 49;
 go-to: 1928_main
 
