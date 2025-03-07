@@ -571,7 +571,7 @@ We have switched our endorsement to Ernst Thälmann of the KPD. [? if z_candidat
 
 - @r2_vote: Let the voting begin.
 
-@r2_endorse_thalmann
+@r2_endorse_remmele
 title: Switch our support to Remmele of the KPD.
 subtitle: This will hurt our party's support.
 view-if: spd_candidate != "Remmele" and kpd_candidate = "Remmele"
