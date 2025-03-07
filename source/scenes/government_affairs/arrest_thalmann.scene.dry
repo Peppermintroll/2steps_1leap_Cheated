@@ -10,7 +10,7 @@ Is it really that simple? His supporters will react violently to this attempt, a
 - @no_attack: No, we must not.
 
 @arrest
-go-to: attack_violence if rfb_strength >= 60; peace_success if rfb_strength < 60
+go-to: attack_violence if rfb_strength >= 55; peace_success if rfb_strength < 55
 
 @attack_violence
 
@@ -73,7 +73,7 @@ if (total_allied_strength > enemy_strength) {
 go-to: force_fail if arrest_success == 0; force_kill if arrest_success = 1
 
 @peace_success
-on-arrival: thalmann_arrested = 1; rfb_strength = rfb_strength*0.8; workers_kpd -= 6; new_middle_kpd -= 6; old_middle_kpd -= 6; rural_kpd -= 4; unemployed_kpd -= 4; coup_progress -= 2; left_coup_progress -= 2; kpd_leader = "Remmele"; thalmann_trial_timer += 6
+on-arrival: thalmann_arrested = 1; rfb_strength = rfb_strength*0.8; workers_kpd -= 6; new_middle_kpd -= 6; old_middle_kpd -= 6; rural_kpd -= 4; unemployed_kpd -= 4; coup_progress -= 2; left_coup_progress -= 2; kpd_leader = "Remmele"; thalmann_trial_timer += 6; left_dissent += 10
 
 Somehow, the plan worked! There was minimal resistance to Thälmann's arrest. This is a sign of weakness, and his captivity makes organizing difficult, impeding the Communists' effort to win more votes. Thälmann's trial is set to take place in a few months' time.
 
