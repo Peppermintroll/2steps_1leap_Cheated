@@ -4,7 +4,7 @@ view-if: year = 1932 and (month = 4 or month = 5) and presidential_election_seen
 frequency: 1000
 max-visits: 1
 new-page: true
-on-arrival: braun_campaign = 0; hitler_support_hindenburg = 0; presidential_election_seen = 1; nsdap_candidate = "Hitler" if (hitler_deported == 0 and hitler_dead == 0) else nsdap_candidate = "Göring";
+on-arrival: braun_campaign = 0; hitler_support_hindenburg = 0; presidential_election_seen = 1; nsdap_candidate = "Hitler" if (hitler_deported == 0 and hitler_dead == 0) else nsdap_candidate = "Göring"; kpd_candidate = "Thälmann" if (thalmann_dead == 0) else kpd_candidate = "Remmele"; kpd_candidate_full = "Ernst Thälmann" if (thalmann_dead == 0) else kpd_candidate = "Hermann Remmele";
 tags: event
 go-to: election_algorithm
 set-jump: pres_election
@@ -12,20 +12,20 @@ face-image: img/hindenburg_election.jpg
 
 @pres_election
 
-The presidential election is coming up soon. [? if spd_in_government = 0 : While the position of Chancellor is typically more important, recent governments have depended on the president's emergency decree powers, making the office vital. ?] [? if hitler_deported==0 : The Nazis will run Hitler, while the KPD will run Thälmann. A victory for Hitler would mean the end of parliamentary democracy, and the beginning of an era of unspeakable horrors. ?][? if hitler_deported==1 : Since Hitler has been deported, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for Hitler, who, despite his legal persecution, retains a popular base who wishes to see him returned to Germany. Meanwhile, the KPD will run Ernst Thälmann. ?][? if hitler_dead==1 : Since Hitler is dead, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for the late Hitler, who, despite being dead, retains a popular base who wishes to see his vile work continued in Germany. Meanwhile, the KPD will run Ernst Thälmann. ?]
-[? if sapd_formed: The SAPD, our former leftists, are supporting Thälmann of the KPD, and will likely share an endorsement with the Communists. ?]
+The presidential election is coming up soon. [? if spd_in_government = 0 : While the position of Chancellor is typically more important, recent governments have depended on the president's emergency decree powers, making the office vital. ?] [? if hitler_deported==0 : The Nazis will run Hitler, while the KPD will run Thälmann. A victory for Hitler would mean the end of parliamentary democracy, and the beginning of an era of unspeakable horrors. ?][? if hitler_deported==1 : Since Hitler has been deported, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for Hitler, who, despite his legal persecution, retains a popular base who wishes to see him returned to Germany. Meanwhile, the KPD will run [+ kpd_candidate_full +] ?][? if hitler_dead==1 : Since Hitler is dead, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for the late Hitler, who, despite being dead, retains a popular base who wishes to see his vile work continued in Germany. Meanwhile, the KPD will run [+ kpd_candidate_full +]. ?]
+[? if sapd_formed: The SAPD, our former leftists, are supporting [+ kpd_candidate +] of the KPD, and will likely share an endorsement with the Communists. ?]
 
 # if hitler is deported, who would nsdap run? Duesterberg? or Goering?
 # Goering runs, essentially as a proxy for Hitler, who is now stateless.
 
 Many are calling for us to support the incumbent Hindenburg, despite his well-known reactionary tendencies. Is he truly the best bulwark against [+ nsdap_candidate +]'s ascension? On the other hand, many in our party are calling for Otto Braun to run again, but he is reluctant.
 
-[? if kpd_relation >= 50 : Another strange possibilty is an united front with the Communists, either to support Thälmann or our own candidate. ?]
+[? if kpd_relation >= 50 : Another strange possibilty is an united front with the Communists, either to support [+ kpd_candidate +] or our own candidate. ?]
 
 
 - @support_hindenburg: Support Hindenburg.
 - @support_braun: Run Otto Braun of the SPD.
-- @support_thalmann: Support Ernst Thälmann of the KPD.
+- @support_thalmann: Support [+ kpd_candidate_full +] of the KPD.
 
 @support_hindenburg
 subtitle: This is the default option.
@@ -50,16 +50,16 @@ The miniscule remnants of the Democratic Party (now called the German State Part
 choose-if: kpd_relation >= 50 and reformist_strength < left_strength
 unavailable-subtitle: [? if kpd_relation < 50 : We do not have good enough relations with the Communists, so they are not even willing to accept our support. ?] [? if reformist_strength >= left_strength : The reformist faction is able to dissuade the party from supporting this arrangement. ?]
 
-Supporting Thälmann is rather unpopular in our party, even if the Communists accept our support. Are we sure?
+Supporting [+ kpd_candidate +] is rather unpopular in our party, even if the Communists accept our support. Are we sure?
 
-- @support_thalmann_2: Yes, we will support Thälmann, despite the reformists' pleas against it.
+- @support_thalmann_2: Yes, we will support [+ kpd_candidate +], despite the reformists' pleas against it.
 - @support_braun: Support Braun instead.
 - @support_hindenburg: Support Hindenburg instead.
 
 @support_thalmann_2
 on-arrival: spd_support_thalmann = 1; reformist_dissent += 15; center_dissent += 10; labor_dissent += 5; neorevisionist_dissent += 10; catholics_spd -= 5; workers_spd -= 3; kpd_relation += 10; communist_coalition += 2; z_relation -= 15; dvp_relation -= 15
 
-Fine. We have thrown our support to Chairman Thälmann of the KPD.
+Fine. We have thrown our support to Chairman [+ kpd_candidate +] of the KPD.
 
 - @final_election: The final vote...
 
@@ -119,7 +119,7 @@ choose-if: spd_votes >= kpd_votes
 unavailable-subtitle: The KPD knows that they are more popular than us; they do not see a reason to support our candidate.
 max-visits: 1
 
-The KPD is supporting their own candidate, Ernst Thälmann. [? if kpd_relation >= 50 : However, they are willing to be convinced to drop their campaign and support Braun; how do we convince them? ?][? if kpd_relation < 50 or kpd_party_leader != "Conciliators" : They do not seem willing to be convinced. ?]
+The KPD is supporting their own candidate, [+ kpd_candidate_full +]. [? if kpd_relation >= 50 : However, they are willing to be convinced to drop their campaign and support Braun; how do we convince them? ?][? if kpd_relation < 50 or kpd_party_leader != "Conciliators" : They do not seem willing to be convinced. ?]
 
 - @kpd_resources: Use our resources.
 - @kpd_relations: Use our good relations.
@@ -262,7 +262,7 @@ Hindenburg - [+ hindenburg_votes +]%
 
 [+ nsdap_candidate +] - [+ hitler_votes +]%
 
-[? if kpd_support_braun == 0 : Thälmann - [+ thalmann_votes +]% ?]
+[? if kpd_support_braun == 0 : [+ kpd_candidate +] - [+ thalmann_votes +]% ?]
 
 [? if braun_campaign > 0 : Braun - [+ braun_votes +]% ?]
 
@@ -280,7 +280,7 @@ There is no majority in this round. In the second round, any candidate who wins 
 - @round2_convince_z: Convince the Center to switch their support to us.
 - @round2_convince_kpd: Convince the KPD to switch their support to us. 
 - @round2_hindenburg: Switch our support to Hindenburg.
-- @round2_thalmann: Switch our support to Thälmann of the KPD.
+- @round2_thalmann: Switch our support to [+ kpd_candidate +] of the KPD.
 - @round2_vote: Let the second round voting begin.
 
 
@@ -344,7 +344,7 @@ unavailable-subtitle: The KPD knows that they are more popular than us; they do 
 view-if: braun_campaign > 0 and kpd_support_braun == 0 
 max-visits: 1
 
-The KPD is committed to supporting Ernst Thälmann. [? if kpd_relation >= 45 : However, the Nazi-Hindenburg coalition worries them enough that they are willing to be convinced to drop their campaign and support Braun. ?][? if kpd_relation < 45 : They do not seem willing to be convinced. ?]
+The KPD is committed to supporting [+ kpd_candidate_full +]. [? if kpd_relation >= 45 : However, the Nazi-Hindenburg coalition worries them enough that they are willing to be convinced to drop their campaign and support Braun. ?][? if kpd_relation < 45 : They do not seem willing to be convinced. ?]
 
 - @r2_kpd_resources: Use our resources.
 - @r2_kpd_relations: Use our good relations.
@@ -374,16 +374,16 @@ choose-if: kpd_relation >= 50 and left_strength > reformist_strength
 unavailable-subtitle: [? if kpd_relation < 50 : We do not have good enough relations with the Communists, so they are not even willing to accept our support. ?] [? if reformist_strength >= left_strength : The reformist faction is able to dissuade the party from supporting this bizarre arrangement. ?]
 max-visits: 1
 
-Supporting Thälmann is rather unpopular in our party, even if the Communists accept our support. Are we sure?
+Supporting [+ kpd_candidate +] is rather unpopular in our party, even if the Communists accept our support. Are we sure?
 
-- @round2_thalmann_2: Yes, we will support Thälmann, despite the reformists' pleas against it.
+- @round2_thalmann_2: Yes, we will support [+ kpd_candidate +], despite the reformists' pleas against it.
 - @round2_menu: Never mind.
 
 @round2_thalmann_2
 on-arrival: braun_campaign = 0; spd_support_thalmann = 1; reformist_dissent += 15; center_dissent += 10; labor_dissent += 5; neorevisionist_dissent += 10; catholics_spd -= 5; workers_spd -= 3; kpd_relation += 10; communist_coalition += 2; z_relation -= 15; dvp_relation -= 15
 on-departure: z_support_braun = 0; kpd_support_braun = 0;
 
-Fine. We have thrown our support to Chairman Thälmann of the KPD.
+Fine. We have thrown our support to Chairman [+ kpd_candidate +] of the KPD.
 
 [? if z_support_braun : The Center Party is confused at our capricious behavior, and have switched their support to Hindenburg. ?]
 
@@ -413,7 +413,7 @@ As expected, the incumbent Hindenburg wins the presidency. Let's hope he continu
 @thalmann_wins
 on-arrival: president = "Thälmann"; kpd_relation = 80;
 
-Ernst Thälmann of the KPD has won the presidency. Immediately, the far-right launches a coup attempt against the government. We have no choice but to unite with the KPD against the fascists...
+[+ kpd_candidate_full +] of the KPD has won the presidency. Immediately, the far-right launches a coup attempt against the government. We have no choice but to unite with the KPD against the fascists...
 
 - @civil_war: This is civil war.
 
