@@ -21,6 +21,7 @@ As with the state police units and the Reichswehr, the internal police tends to 
 - @deport_hitler
 - @attack_hitler
 - @fabricate_hitler: Fabricate a case against Hitler.
+- @fabricate_thalmann: Fabricate a case against Thälmann.
 - @root: Take no action for now.
 - @easy_discard
 
@@ -96,3 +97,11 @@ on-arrival: resources -= 1; fabricate_far_right = 1
 
 Our corrupt investigators quickly fabricate a plausible criminal case against Hitler. Although it is unlikely to stand up to serious judicial scrutiny, it may suffice to obtain an arrest warrant from a cooperative judge.
 
+@fabricate_thalmann
+subtitle: -1 resources
+choose-if: corrupt_interior >= 1 and enemies = "KPD" and resources > 0
+unavailable-subtitle: [? if enemies != "KPD": The KPD are not our main enemy. ?] [? if resources < 1: Not enough resources. ?] [? if corrupt_interior = 0: The Interior Ministry may be corrupt, but not in our favor. ?]
+view-if: kpd_party_leader = "Thälmann" and thalmann_dead = 0 and fabricate_far_left = 0
+on-arrival: resources -= 1; fabricate_far_left = 1; left_dissent += 8
+
+Our corrupt investigators quickly fabricate a plausible criminal case against Thälmann. Although it is unlikely to stand up to serious judicial scrutiny, it may suffice to obtain an arrest warrant from a cooperative judge.
