@@ -27,13 +27,15 @@ on-arrival: resources -= 1; west_relation += 1; reformist_strength += 5; pacifis
 The socialists of France and Britain can influence their governments to be friendlier towards Germany. Hopefully they will reduce our reparations burden.
 
 @austria
-subtitle: -1 resources
+subtitle: -1 resources [? if austrian_parliament_seen and not austrian_civil_war_seen: - We will also help the Austrians oppose their dictatorship. ?]
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-audio: shuffle music/communist/workers_of_vienna_normalized.mp3
-on-arrival: left_strength += 5; radicalization += 1; rb_militancy += 0.03; resources -= 1
+audio: shuffle music/vienna.mp3
+on-arrival: left_strength += 5; radicalization += 1; rb_militancy += 0.03; resources -= 1; austria_relation += 1; sdapo_strength += 1 if austrian_parliament_seen = 1
 
-Our Reichsbanner can learn much in paramilitary organization and training from the Austrian Republican Protection Units.
+Our Reichsbanner can learn much in paramilitary organization and training from the Austrian Republikanischer Schutzbund (Republican Protection Units), the paramilitary branch of the Austrian social democrats.
+
+[? if austrian_parliament_seen and not austrian_civil_war_seen: We are also helping the Austrian Social Democratic Worker's Party build up their resources in preparation for a future struggle, legally and illegally. ?]
 
 @scandi
 subtitle: -1 resources
@@ -56,6 +58,7 @@ view-if: olympics_won == 0
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
+audio: shuffle music/amerika.mp3
 on-arrival: resources -= 1
 
 The Socialist Party of America is tiny and has limited support. There is not much we can do for them, and conversely, not much they can do for us.
@@ -65,7 +68,8 @@ view-if: olympics_won >= 1
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; left_dissent -= 8; labor_dissent -= 8; center_dissent -= 8; neorevisionist_dissent -= 8; workers_spd += 6*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 3*(1-dissent); rural_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent); kpd_relation += 5*(1-dissent);
+audio: shuffle music/amerika.mp3
+on-arrival: resources -= 1; left_dissent -= 12; labor_dissent -= 12; center_dissent -= 12; neorevisionist_dissent -= 12; workers_spd += 9*(1-dissent); new_middle_spd += 6*(1-dissent); old_middle_spd += 6*(1-dissent); rural_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent); kpd_relation += 5*(1-dissent); pacifism += 2; nationalism -= 5
 achievement: amerikanischen
 max-visits: 1
 
