@@ -14,6 +14,7 @@ As we have control over the Interior Ministry, we can direct police and intellig
 
 - @deport_hitler
 - @attack_hitler
+- @arrest_thalmann
 - @fabricate_hitler: Fabricate a case against Hitler.
 - @fabricate_thalmann: Fabricate a case against Thälmann.
 - @ban_sa: Ban the SA.
