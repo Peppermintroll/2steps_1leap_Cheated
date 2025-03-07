@@ -1,0 +1,53 @@
+title: The Trial of Ernst Thälmann
+subtitle: So it has come to this...
+new-page: true 
+tags: event
+card-image: img/portraits/ThälmannErnst.jpg
+view-if: thalmann_trial_timer == 0 and thalmann_arrested == 1
+max-visits: 1
+
+= The Trial of Ernst Thälmann
+
+Tomorrow is the trial of Ernst Thälmann, leader of the Communist Party. His crimes are numerous yet nebulous, the evidence against him is troubling yet largely circumstantial, and the witnesses, while talkative, are neither reliable nor trustworthy. All in all, there is a good chance that he will walk free. If that happens, he will likely dedicate the rest of his political career taking his revenge on us. What shall we do?
+
+
+- @court_decide
+- @bribe_court
+- @pardon_thalmann
+
+@court_decide
+title: Let the court decide his fate.
+go-to: mega_guilty_verdict if (corrupt_judiciary > 2 and judicial_reforms < 1); innocent_verdict if (corrupt_judiciary < 2 and judicial_reforms > 1); guilty_verdict if (corrupt_judiciary == 2 or judicial_reforms == 1)
+
+@innocent_verdict
+on-arrival: kpd_leader = "Thälmann"; rfb_strength += 200; rb_strength *= 0.7; rfb_militancy += 0.5; workers_kpd += 12; unemployed_kpd += 12; rural_kpd += 12; attack_thalmann_seen += 1; kpd_coalition_dissent += 5; coalition_dissent += 2; reformist_dissent += 12; left_dissent -= 12; left_strength += 8; reformist_strength -= 8
+
+With the case against him so obviously fabricated, Thälmann is found not guilty on all counts. Our gambit has failed and we will pay the price.
+
+@mega_guilty_verdict
+on-arrival: kpd_leader = "Remmele"; rfb_strength *= 0.6; workers_kpd -= 6; unemployed_kpd -= 6; rural_kpd -= 6; attack_thalmann_seen += 1; kpd_coalition_dissent += 5; coalition_dissent -= 2; reformist_dissent -= 12; left_dissent += 12; left_strength -= 8; reformist_strength += 8; sa_strength += 80; sh_strength += 80; thalmann_dead = 1
+
+To the shock of many, Thälmann is found guilty on all counts. Indeed, the combined gravity of his alleged crimes is sufficient to merit death penalty. The Communist party mourns his fate, while the Nazis use it as a recruiting tool to demonstrate the evils of socialists.
+
+@guilty_verdict
+on-arrival: kpd_leader = "Thälmann"; rfb_strength += 100; rb_strength *= 0.9; rfb_militancy += 0.2; workers_kpd += 6; unemployed_kpd += 6; rural_kpd += 6; attack_thalmann_seen += 1; kpd_coalition_dissent += 5; coalition_dissent += 1; reformist_dissent += 8; left_dissent -= 8; left_strength += 6; reformist_strength -= 6
+
+To the surprise of many, Thälmann is found guilty on just a few counts, and his sentence is further commuted in light of his pre-trial incarceration and model behavior. KPD celebrates his imminent return, and we can only brace ourselves for the storm to come.
+
+@bribe_court
+title: Pull strings to get a guilty verdict no matter what.
+view-if: corrupt_judiciary >= 1 and justice_minister_party = "SPD"
+choose-if: resources >= corrupt_judiciary_costs
+on-arrival: resources -= corrupt_judiciary_costs; corrupt_judiciary += 1; spd_total_corruption += 1; corrupt_judiciary_costs += 1
+unavailable-subtitle: Not enough resources ([+ corrupt_judiciary_costs +] needed).
+go-to: mega_guilty_verdict
+
+@pardon_thalmann
+title: Pull strings to get a not-guilty verdict.
+subtitle: This has gone too far.
+view-if: corrupt_judiciary >= 1 and justice_minister_party = "SPD"
+choose-if: resources >= 1
+on-arrival: resources -= 1; kpd_leader = "Thälmann"; rfb_strength += 200; rfb_militancy += 0.5; workers_kpd += 12; unemployed_kpd += 12; rural_kpd += 12; attack_thalmann_seen += 1; kpd_coalition_dissent += 5; coalition_dissent += 2; reformist_dissent += 12; left_dissent -= 12; left_strength += 8; reformist_strength -= 8
+unavailable-subtitle: Not enough resources.
+
+Thälmann is found not guilty on all counts. KPD celebrates his freedom, and we are left to ponder whether any of this was worth it.
