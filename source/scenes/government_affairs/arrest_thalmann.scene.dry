@@ -1,7 +1,7 @@
 title: We can arrest Thälmann for fabricated crimes.
 subtitle: "Social fascism"? Oh, we'll *show* him social fascism.
 unavailable-subtitle: [? if judicial_reform >= 2 : Unfortunately, the reformed judiciary is too honest and will not cooperate. ?] [? if not spd_prussia : We cannot do this without the cooperation of the Prussian police, who are not currently in our control. ?] [? if attack_thalmann_seen: After our botched attempt, no judge will touch Thälmann's case again. ?] [? if left_strength >= 15 : Our leftist members would warn the KPD if we tried. ?]
-view-if: thalmann_dead = 0 and thalmann_arrested = 0 and chancellor != "Thälmann" and in_popular_front = 0 and in_left_front = 0 and fabricate_far_left >= 1
+view-if: thalmann_dead == 0 and thalmann_arrested == 0 and chancellor != "Thälmann" and fabricate_far_left >= 1
 choose-if: judicial_reform <= 2 and spd_prussia == 1 and attack_thalmann_seen == 0 and left_strength < 15
 
 Is it really that simple? His supporters will react violently to this attempt, and we must be ready to respond in kind. And even if the attack does succeed, won't the truth behind the allegations come out eventually once our corrupt accomplices in the judiciary and police sell us out? Won't we be inviting reprisals against our own leadership? And, many people consider this to be an anti-democratic abuse of power, abusing the law and order to arrest a political opponent.
