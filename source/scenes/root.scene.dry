@@ -43,6 +43,8 @@ Q.usa_soc = 0;
 Q.attack_hitler_seen = 0;
 Q.redalert = 0;
 Q.hitler_dead = 0;
+Q.thalmann_dead = 0;
+Q.otto_braun_dead = 0;
 Q.disband_military = 0;
 Q.reichstag_burn = 0;
 Q.military_rearmed = 0;
@@ -80,6 +82,7 @@ Q.hitler_comeback_timer = 0;
 Q.privatize_welfare = 0;
 Q.women_betrayed = 0;
 Q.women_left_spd = 0;
+Q.fabricate_far_left = 0;
 
 Q.strike_term_seen = 0;
 // 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
