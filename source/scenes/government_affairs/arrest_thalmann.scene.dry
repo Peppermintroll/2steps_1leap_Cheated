@@ -10,7 +10,7 @@ Is it really that simple? His supporters will react violently to this attempt, a
 - @no_attack: No, we must not.
 
 @arrest
-go-to: attack_violence if rfb_strength >= 135; arrest_success if rfb_strength < 135
+go-to: attack_violence if rfb_strength >= 135; peace_success if rfb_strength < 135
 
 @attack_violence
 
@@ -34,7 +34,7 @@ if (total_allied_strength > enemy_strength) {
     Q.arrest_success = 0;
 }
 !}
-go-to: force_fail if arrest_success == 0 and firepower < 1.5; force_success if arrest_success = 1 and firepower < 1.5; force_kill if firepower >= 1.5
+go-to: force_fail if arrest_success == 0 and firepower < 1.5; force_success if arrest_success == 1 and firepower < 1.5; force_kill if firepower >= 1.5
 
 @force_fail
 on-arrival: rfb_strength += 250; rb_strength *= 0.6; workers_kpd += 10; unemployed_kpd += 8; new_middle_kpd += 2; old_middle_kpd += 2; rural_kpd += 8; left_coup_progress += 3; attack_thalmann_seen = 1; kpd_relation -= 35; communist_coalition -= 3; workers_spd -= 10; unemployed_spd -= 8; left_dissent += 60
@@ -44,7 +44,7 @@ Unfortunately, our forces fail to disloge the RFB from their positions surroundi
 @force_success
 on-arrival: thalmann_arrested = 1; rfb_strength = rfb_strength*0.7; workers_kpd -= 6; new_middle_kpd -= 6; old_middle_kpd -= 6; rural_kpd -= 4; unemployed_kpd -= 4; coup_progress -= 2; left_coup_progress -= 2; kpd_leader = "Remmele"; thalmann_trial_timer += 6
 
-The confrontation ends with the police and Reichsbanner prevailing, capturing Thälmann! This is a sign of weakness, and his captivity distance makes organizing difficult, impeding the Communists' effort to win more votes. Thälmann's trial is set to take place in a few months' time.
+The confrontation ends with the police and Reichsbanner prevailing, capturing Thälmann! This is a sign of weakness, and his captivity makes organizing difficult, impeding the Communists' effort to win more votes. Thälmann's trial is set to take place in a few months' time.
 
 In Thälmann's absence, Hermann Remmele has become the interim leader of the Communist party.
 
@@ -71,6 +71,14 @@ if (total_allied_strength > enemy_strength) {
 }
 !}
 go-to: force_fail if arrest_success == 0; force_kill if arrest_success = 1
+
+@peace_success
+on-arrival: thalmann_arrested = 1; rfb_strength = rfb_strength*0.8; workers_kpd -= 6; new_middle_kpd -= 6; old_middle_kpd -= 6; rural_kpd -= 4; unemployed_kpd -= 4; coup_progress -= 2; left_coup_progress -= 2; kpd_leader = "Remmele"; thalmann_trial_timer += 6
+
+Somehow, the plan worked! There was minimal resistance to Thälmann's arrest. This is a sign of weakness, and his captivity makes organizing difficult, impeding the Communists' effort to win more votes. Thälmann's trial is set to take place in a few months' time.
+
+In Thälmann's absence, Hermann Remmele has become the interim leader of the Communist party.
+
 
 @no_attack
 
