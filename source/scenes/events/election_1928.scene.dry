@@ -768,7 +768,7 @@ President Braun faces a dilemma. He desperately desires a socialist or at least 
 @emergency_braun
 title: We will form an emergency government with Braun's support.
 subtitle: This may have the effect of inflamming public sentiment against us, and the reactionaries will be against us each step of the way.
-on-arrival: sa_strength += 100; sh_strength += 100; in_emergency_government = 1;
+on-arrival: sa_strength += 100; sh_strength += 100; in_emergency_government = 1
 
 Yes, an emergency minority government, with the support of the SPD. Who should lead this emergency minority government?
 
@@ -1016,6 +1016,11 @@ if (Q.pro_republic < 45) {
     Q.new_middle_nsdap += 10;
     Q.rural_nsdap += 10;
     Q.unemployed_nsdap += 10;   
+}
+if (Q.far_right_coalition >= 50) {
+    Q.sa_strength += 100;
+    Q.sh_strength += 100;
+    Q.coup_progress += 3;
 }
 !}
 
