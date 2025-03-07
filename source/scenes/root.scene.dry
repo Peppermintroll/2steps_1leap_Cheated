@@ -86,6 +86,7 @@ Q.privatize_welfare = 0;
 Q.women_betrayed = 0;
 Q.women_left_spd = 0;
 Q.fabricate_far_left = 0;
+Q.arrest_success = 0;
 
 Q.strike_term_seen = 0;
 // 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
