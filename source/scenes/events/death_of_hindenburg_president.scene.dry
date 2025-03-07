@@ -737,7 +737,7 @@ Thälmann wastes no time in consolidating power, using all means available to re
 
 - @civil_war: This is civil war.
 
-@remmele_civil_war
+@remmele_victory
 on-arrival: kpd_relation = 60
 
 # TODO: depose the chancellor?
