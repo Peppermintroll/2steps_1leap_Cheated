@@ -20,6 +20,7 @@ As with the state police units and the Reichswehr, the internal police tends to 
 - @domestic_enemies: Investigate or ban our domestic enemies.
 - @deport_hitler
 - @attack_hitler
+- @arrest_thalmann
 - @fabricate_hitler: Fabricate a case against Hitler.
 - @fabricate_thalmann: Fabricate a case against Thälmann.
 - @root: Take no action for now.
