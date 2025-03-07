@@ -1,0 +1,77 @@
+title: We can arrest Thälmann for fabricated crimes.
+subtitle: "Social fascism"? Oh, we'll *show* him social fascism.
+unavailable-subtitle: [? if judicial_reform >= 2 : Unfortunately, the reformed judiciary is too honest and will not cooperate. ?] [? if not spd_prussia : We cannot do this without the cooperation of the Prussian police, who are not currently in our control. ?] [? if attack_thalmann_seen: After our botched attempt, no judge will touch Thälmann's case again. ?] [? if left_strength >= 15 : Our leftist members would warn the KPD if we tried. ?]
+view-if: thalmann_dead = 0 and thalmann_arrested = 0 and chancellor != "Thälmann" and in_popular_front = 0 and in_left_front = 0 and fabricate_far_left >= 1
+choose-if: judicial_reform <= 2 and spd_prussia == 1 and attack_thalmann_seen == 0 and left_strength < 15
+
+Is it really that simple? His supporters will react violently to this attempt, and we must be ready to respond in kind. And even if the attack does succeed, won't the truth behind the allegations come out eventually once our corrupt accomplices in the judiciary and police sell us out? Won't we be inviting reprisals against our own leadership? And, many people consider this to be an anti-democratic abuse of power, abusing the law and order to arrest a political opponent.
+
+- @arrest: Arrest him!
+- @no_attack: No, we must not.
+
+@arrest
+go-to: attack_violence if rfb_strength >= 135; arrest_success if rfb_strength < 135
+
+@attack_violence
+
+When the police and the Reichsbanner approach, Thälmann is surrounded by his RFB comrades, hellbent on preventing him from being arrested! We can attempt to force a confrontation, but that may have negative consequences. The Reichsbanner may also attempt to draw off the RFB.
+
+- @force_approach: Force the approach!
+- @force_prejudice: Force the approach, with extreme prejudice!
+- @no_attack: Cancel the arrest.
+
+@force_approach
+on-arrival: {!
+var total_allied_strength = Q.rb_strength*Q.rb_militancy + Q.prussian_police_strength*Q.prussian_police_militancy*Q.prussian_police_loyalty;
+var enemy_strength = Q.rfb_strength*Q.rfb_militancy;
+var firepower = Q.rb_militancy + Q.rfb_militancy + Q.prussian_police_militancy;
+console.log('Deporting Thalmann - force approach');
+console.log(total_allied_strength, enemy_strength);
+
+if (total_allied_strength > enemy_strength) {
+    Q.arrest_success = 1;
+} else {
+    Q.arrest_success = 0;
+}
+!}
+go-to: force_fail if arrest_success == 0 and firepower < 1.5; force_success if arrest_success = 1 and firepower < 1.5; force_kill if firepower >= 1.5
+
+@force_fail
+on-arrival: rfb_strength += 250; rb_strength *= 0.6; workers_kpd += 10; unemployed_kpd += 8; new_middle_kpd += 2; old_middle_kpd += 2; rural_kpd += 8; left_coup_progress += 3; attack_thalmann_seen = 1; kpd_relation -= 35; communist_coalition -= 3; workers_spd -= 10; unemployed_spd -= 8; left_dissent += 60
+
+Unfortunately, our forces fail to disloge the RFB from their positions surrounding Thälmann. He is seen as both a strong and powerful leader and a victim, further reinforcing his image, while we have vindicated every accusation of social fascism he had made against us. Many of our line members desert and join the KPD.
+
+@force_success
+on-arrival: thalmann_arrested = 1; rfb_strength = rfb_strength*0.7; workers_kpd -= 6; new_middle_kpd -= 6; old_middle_kpd -= 6; rural_kpd -= 4; unemployed_kpd -= 4; coup_progress -= 2; left_coup_progress -= 2; kpd_leader = "Remmele"; thalmann_trial_timer += 6
+
+The confrontation ends with the police and Reichsbanner prevailing, capturing Thälmann! This is a sign of weakness, and his captivity distance makes organizing difficult, impeding the Communists' effort to win more votes. Thälmann's trial is set to take place in a few months' time.
+
+In Thälmann's absence, Hermann Remmele has become the interim leader of the Communist party.
+
+@force_kill
+on-arrival: thalmann_dead = 1; rfb_strength = sa_strength*0.7; rb_strength = rb_strength*0.9; prussian_police_strength = prussian_police_strength*0.9; strife += 2; kpd_coalition_dissent += 8; workers_kpd -= 6; new_middle_kpd -= 6; old_middle_kpd -= 6; rural_kpd -= 4; unemployed_kpd -= 4; coup_progress -= 2; left_coup_progress += 5; kpd_leader = "Remmele"; attack_thalmann_seen = 1; kpd_relation -= 35; communist_coalition -= 6; workers_spd -= 4; unemployed_spd -= 3; left_dissent += 60
+
+Just as we intended, the confrontation escalates into an all-out firefight between the police, the Reichsbanner, and the left-wing militia. The final casualty count amounts to over a hundred wounded and about two dozen dead, the latter including Thälmann himself. 
+
+Following Thälmann's death, Hermann Remmele has become the interim leader of the Communist party.
+
+@force_prejudice
+choose-if: (rb_militancy + prussian_police_militancy) >= 1.1
+unavailable-subtitle: Our units and the police don't have enough guns between them.
+on-arrival: {!
+var total_allied_strength = Q.rb_strength*Q.rb_militancy + Q.prussian_police_strength*Q.prussian_police_militancy*Q.prussian_police_loyalty;
+var enemy_strength = Q.rfb_strength*Q.rfb_militancy;
+console.log('Attacking Thalmann - force approach');
+console.log(total_allied_strength, enemy_strength);
+
+if (total_allied_strength > enemy_strength) {
+    Q.arrest_success = 1;
+} else {
+    Q.arrest_success = 0;
+}
+!}
+go-to: force_fail if arrest_success == 0; force_kill if arrest_success = 1
+
+@no_attack
+
+We need to make sure that we're ready because we will only get one shot at this. 
