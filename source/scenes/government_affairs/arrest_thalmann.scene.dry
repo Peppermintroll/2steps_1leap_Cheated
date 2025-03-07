@@ -10,7 +10,7 @@ Is it really that simple? His supporters will react violently to this attempt, a
 - @no_attack: No, we must not.
 
 @arrest
-go-to: attack_violence if rfb_strength >= 135; peace_success if rfb_strength < 135
+go-to: attack_violence if rfb_strength >= 60; peace_success if rfb_strength < 60
 
 @attack_violence
 
