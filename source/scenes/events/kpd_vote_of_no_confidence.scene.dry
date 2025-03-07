@@ -20,7 +20,7 @@ The KPD has called a vote of no confidence against us, due to our various polici
 How do we assuage the KPD?
 
 - @resources: Use our resources to reduce dissent within the coalition.
-- @thalmann: Appoint Thälmann as chancellor instead of [+ chancellor +].
+- @thalmann: Appoint [+ kpd_leader +] as chancellor instead of [+ chancellor +].
 - @support_center: Could we form a new government based on the Center Party and DDP (and possibly DVP)?
 - @let_it_happen: Never mind. Let the vote happen.
 
@@ -28,7 +28,7 @@ How do we assuage the KPD?
 choose-if: president == "Braun"
 subtitle: This would be pretext for a right-wing coup.
 unavailable-subtitle: [? if president == "Hindenburg" : President Hindenburg would never allow this. ?]
-on-arrival: chancellor = "Thälmann"; chancellor_party = "KPD"
+on-arrival: chancellor = kpd_leader; chancellor_party = "KPD"
 
 With great reluctance, President [+ president +] appoints [+ chancellor +] as chancellor.
 
