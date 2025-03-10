@@ -749,7 +749,7 @@ go-to: 1928_main
 May history have mercy on us, for the world will not.
 
 @1928_main
-audio: shuffle music/FruhlingsliedMendelssohn.mp3 music/AUF_HOHEN_BERGEN.mp3 music/MarekWeber.mp3 music/BAUERNKAPELLE.mp3 music/DERLINDENBAUM_normalized.mp3 music/ZurSonne_zurFreiheit.mp3 music/arbeiter_marseille.mp3 music/Wann_wir_schreiten_Seit_an_Seit.mp3 music/Internationale-de_normalized.ogg
+audio: shuffle music/FruhlingsliedMendelssohn.mp3 music/AHB.mp3 music/derlindenbaum.mp3 music/ZSZF.mp3 music/arbeiter_marseille.mp3 music/wannwir.mp3 music/Internationale-de.ogg
 new-page: true
 go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
 
