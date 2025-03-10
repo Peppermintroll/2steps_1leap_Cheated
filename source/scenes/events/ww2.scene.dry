@@ -1,5 +1,5 @@
 title: World War Two
-audio: music/communist/A_las_barricadas.ogg
+audio: music/A_las_barricadas.ogg
 subtitle: So it has come to this...
 view-if: year = 1933 and month = 10 and world_war_two >= 5
 on_arrival: world_war_two = 1933
