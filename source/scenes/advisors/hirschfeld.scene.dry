@@ -12,6 +12,7 @@ Magnus Hirschfeld is the founder of the Institut für Sexualwissenschaft and an 
 
 - @homosexual_rights_
 - @womens_rights_
+- @science_funding
 - @attack_and_destroy_god
 - @root: Return to main
 
@@ -21,7 +22,7 @@ title: Homosexual rights
 subtitle: Enact policy that supports homosexual rights.
 choose-if: advisor_action_timer = 0 and spd_in_government and progressive_coalition >= 40
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The SPD is not currently in government. ?][? if progressive_coalition < 40 : We do not have the votes to enact these policies. ?]
-on-arrival: advisor_action_timer = 6; homosexual_rights_timer -= 11
+on-arrival: advisor_action_timer = 6; homosexual_rights_timer -= 11; last_advisor_action = 1
 go-to: homosexual_rights
 
 
@@ -30,8 +31,16 @@ title: Women's rights
 subtitle: Enact policy with regards to women's rights.
 choose-if: advisor_action_timer = 0 and spd_in_government
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The SPD is not currently in government. ?]
-on-arrival: advisor_action_timer = 6; womens_rights_timer -= 10
+on-arrival: advisor_action_timer = 6; womens_rights_timer -= 10; last_advisor_action = 1
 go-to: womens_rights
+
+@science_funding
+title: Science funding
+subtitle: Increase funding for scientific research.
+choose-if: advisor_action_timer = 0 and spd_in_government and economic_minister_party = "SPD" and chancellor_party = "SPD"
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The SPD is not currently in government. ?][? if economic_minister_party != "SPD": This requires the Economic Ministry. ?][? if chancellor_party != "SPD": The Chancellor must be an SPD member. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1
+go-to: education_science.increase_science
 
 @attack_and_destroy_god
 title: Publish novel research on gender and sexuality.
@@ -40,4 +49,4 @@ choose-if: advisor_action_timer = 0 and homosexual_rights >= 1 and resources >= 
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if homosexual_rights == 0 : The research subject is criminalized under current laws. ?][? if resources < 1: Not enough resources. ?]
 on-arrival: resources -=1; advisor_action_timer = 6; trans_progress += 1; catholics -= 4*trans_progress; coalition_dissent += 1 if (in_grand_coalition or in_weimar_coalition); coalition_dissent += 1 if ((in_grand_coalition or in_weimar_coalition) and homosexual_rights < 3); catholics_spd -= 4; z_relation -= 4; catholics = 2 if catholics <= 2; catholic_strike += 1; catholic_strike += 1 if trans_progress >= 3
 
-We publish Hirschfeld's scientific research that challenges traditional understanding of sexuality and gender, and leads more than a few readers questioning their beliefs. [? if homosexual_rights < 3: Of course, conservatives and the far right accuse us of promoting deviant and illegal activities ?].
+We publish Hirschfeld's scientific research that challenges traditional understanding of sexuality and gender, and leads more than a few readers questioning their beliefs. [? if homosexual_rights < 3: Our enemies accuse us of promoting deviant and illegal activities ?].  Catholic leaders declare Hirschfeld's research an attempt to attack and dethrone God himself.
