@@ -4,7 +4,7 @@ subtitle: A magazine is tried for revealing military secrets...
 view-if: year = 1929 and (month = 8 or month = 9) and judicial_reform < 4 and rearmament_exposed == 0
 max-visits: 1
 on-arrival: weltbuhne_seen = 1
-face-image: img/weltbune.jpg
+face-image: img/Weltbuhne.jpg
 tags: event
 
 # if the SPD controls the judiciary then they can just cancel the trial (at the expense of DVP relations).
