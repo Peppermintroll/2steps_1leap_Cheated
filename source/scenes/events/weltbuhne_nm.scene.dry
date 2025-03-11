@@ -13,7 +13,7 @@ tags: event
 
 Our party newspaper Vorwärts has been targeted by the national authorities for allegedly revealing state secrets. The allegations are frustratingly vague, ostensibly due to the classified nature of the secrets in question. This is a shameless and unprovoked attack against Friedrich Stampfer, the editor-in-chief of Vorwärts and long-standing member of our party.
 
-[? if spd_in_government and justice_minister_party = "SPD" : With our control of the Justice Ministry, we could try to drop the case. This may cost [+ justice_minister +] his position. ?]
+[? if spd_in_government and justice_minister_party = "SPD" : With our control of the Justice Ministry, we could try to drop the case. This may cost us dearly. ?]
 [? if spd_in_government and justice_minister_party != "SPD" : The Justice Ministry is seeking to persecute Stampfer. We can try to persuade our coalition partners to drop the case, but they will likely resist. ?]
 
 - @drop_case: Drop the case.
