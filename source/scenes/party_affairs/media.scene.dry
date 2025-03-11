@@ -2,13 +2,15 @@ title: Media
 new-page: true
 is-card: true
 tags: party_affairs
-view-if: media_timer <= 0
+view-if: media_timer <= 0 
 on-arrival: month_actions += 1; media_timer += 6;
 card-image: img/sangerbund.jpg
 
 = Media
 
 The SPD runs a veritable media empire, with many newspapers throughout every German city and region. We could use the media for various purposes...
+
+[? if stampfer_arrested : The arrest of Friedrich Stampfer and the banning of Vorwärts has significantly diminished our media influence outside of our party's ranks. ?]
 
 - @commercial
 - @campaign
@@ -24,6 +26,8 @@ The SPD runs a veritable media empire, with many newspapers throughout every Ger
 
 @commercial
 title: Make our newspapers more commercialized by broadening their appeal beyond party supporters.
+choose-if: stampfer_arrested = 0
+unavailable-subtitle: The broad public steers clear of our newspapers ever since the Vorwärts affair.
 subtitle: This might upset ideological purists, but it may bring in more funds and perhaps expose the middle class to socialist views.
 on-arrival: resources += 1; commercialized_media += 1; new_middle_spd += 4*(1 - dissent); old_middle_spd += 3*(1-dissent); left_dissent += 10; labor_dissent += 10
 
