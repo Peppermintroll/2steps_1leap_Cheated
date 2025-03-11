@@ -2,7 +2,7 @@ title: Friedrich Stampfer
 is-pinned-card: true
 tags: advisor
 card-image: img/portraits/StampferFriedrich.jpg
-view-if: stampfer_advisor = 1
+view-if: stampfer_advisor = 1 and not stampfer_arrested
 new-page: true 
 
 = Friedrich Stampfer
