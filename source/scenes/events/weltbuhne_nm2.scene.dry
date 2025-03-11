@@ -1,0 +1,21 @@
+title: The conclusion of the Vorwärts case
+subtitle: Friedrich Stampfer and collaborators are finally sentenced.
+new-page: true
+view-if: year = 1931 and month >= 3 and vortrial_seen = 1 and not vortrial_dropped and nightmare >= 1
+max-visits: 1
+on-arrival: vortrial_conclusion = 1
+face-image: img/vorwarts_2.jpg
+tags: event
+go-to: stampfer_dropped if judicial_reform >= 3; stampfer_convicted if judicial_reform < 3
+
+= The Vorwärts Trial, Conclusion
+
+@stampfer_convicted
+on-arrival: left_dissent -= 10; labor_dissent -= 10; centrist_dissent -= 10; reformist_dissent -= 10; neorevisionist_dissent -= 10; stampfer_arrested = 1
+
+Finally, a court has made a decision in the Vorwärts case, sentencing the editor Friedrich Stampfer to prison for 18 years for revealing state secrets and banning the newspaper indefinitely. [? if radio >= 1 : At least we still have our radio station. ?]
+
+@stampfer_dropped
+on-arrival: left_dissent -= 10; labor_dissent -= 10; centrist_dissent -= 10; reformist_dissent -= 10; neorevisionist_dissent -= 10
+
+Finally, a judge has made a decision in the Vorwärts case, clearing the editor Friedrich Stampfer of all charges! Our party members rejoice at the news.
