@@ -1,0 +1,57 @@
+title: The Vorwärts Trial
+new-page: true
+subtitle: A newspaper is tried for revealing state secrets...
+view-if: year = 1929 and (month = 8 or month = 9) and judicial_reform < 4 and nightmare = 1
+max-visits: 1
+on-arrival: vortrial_seen = 1
+face-image: img/vorwarts_2.jpg
+tags: event
+
+# Nightmare Mode version of the Weltbuhne trial. 
+
+= The Vorwärts Trial
+
+Our party newspaper Vorwärts has been targeted by the national authorities for allegedly revealing state secrets. The allegations are frustratingly vague, ostensibly due to the classified nature of the secrets in question. This is a shameless and unprovoked attack against Friedrich Stampfer, the editor-in-chief of Vorwärts and long-standing member of our party.
+
+[? if spd_in_government and justice_minister_party = "SPD" : With our control of the Justice Ministry, we could try to drop the case. This may cost [+ justice_minister +] his position. ?]
+[? if spd_in_government and justice_minister_party != "SPD" : The Justice Ministry is seeking to persecute Stampfer. We can try to persuade our coalition partners to drop the case, but they will likely resist. ?]
+
+- @drop_case: Drop the case.
+- @let_persecute: Let injustice take its course.
+- @pressure_drop: Pressure our coalition partners to drop the case.
+- @bribe_court
+- @nothing: There is nothing we can do.
+
+@bribe_court
+title: Pull strings to get a not guilty verdict.
+choose-if: corrupt_judiciary >= 1 and resources >= corrupt_judiciary_costs
+on-arrival: resources -= corrupt_judiciary_costs; corrupt_judiciary += 1; spd_total_corruption += 1; corrupt_judiciary_costs += 1; vortrial_dropped = 0
+unavailable-subtitle: [? if resources < corrupt_judiciary_costs : Not enough resources ([+ corrupt_judiciary_costs +] needed). ?] [? if corrupt_judiciary < 0 : The judges may be corrupt, but not in our favor. ?]
+
+At our subtle encouragement, the Justice Ministry has dropped all persecution of Friedrich Stampfer and journalists of Vorwärts.
+
+@drop_case
+view-if: spd_in_government
+choose-if: spd_in_government and justice_minister_party = "SPD"
+unavailable-subtitle: [? if not spd_in_government : SPD not in government. ?] [? if spd_in_government and justice_minister_party != "SPD": The SPD does not control the Justice Ministry. ?]
+on-arrival: vortrial_dropped = 1; justice_minister_party = "DDP"; justice_minister = "Koch-Weser"
+
+At our direction, the Justice Ministry has dropped all persecution of Friedrich Stampfer and journalists of Vorwärts. In retribution, President Hindenburg has fired Gustav Radbruch from the position of the justice minister.
+
+@let_persecute
+view-if: spd_in_government
+on-arrival: vortrial_dropped = 0; labor_dissent += 6; left_dissent += 6; center_dissent += 6; reformist_dissent += 6
+
+The case progresses slowly, given the secrets involved, and there will be no determination made for a while. Our party members are displeased by our inaction.
+
+@pressure_drop
+view-if: spd_in_government and justice_minister_party != "SPD"
+on-arrival: vortrial_dropped = 1; dvp_relation -= 6; z_relation -= 6; coalition_dissent += 1; coalition_dissent += 2 if in_grand_coalition
+
+We have pressured the Justice Ministry to drop the case against Vorwärts, greatly raising tensions with our coalition.
+
+@nothing
+view-if: not spd_in_government
+on-arrival: vortrial_dropped = 0
+
+The case progresses slowly, given the secrets involved, and there will be no determination made for a while. 
