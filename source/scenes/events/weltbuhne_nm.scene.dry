@@ -25,18 +25,20 @@ Our party newspaper Vorwärts has been targeted by the national authorities for 
 @bribe_court
 title: Pull strings to get a not guilty verdict.
 choose-if: corrupt_judiciary >= 1 and resources >= corrupt_judiciary_costs
-on-arrival: resources -= corrupt_judiciary_costs; corrupt_judiciary += 1; spd_total_corruption += 1; corrupt_judiciary_costs += 1; vortrial_dropped = 0
+on-arrival: resources -= corrupt_judiciary_costs; corrupt_judiciary += 1; spd_total_corruption += 1; corrupt_judiciary_costs += 1; vortrial_dropped = 0; left_dissent -= 10; labor_dissent -= 10; centrist_dissent -= 10; reformist_dissent -= 10; neorevisionist_dissent -= 10
 unavailable-subtitle: [? if resources < corrupt_judiciary_costs : Not enough resources ([+ corrupt_judiciary_costs +] needed). ?] [? if corrupt_judiciary < 0 : The judges may be corrupt, but not in our favor. ?]
 
-At our subtle encouragement, the Justice Ministry has dropped all persecution of Friedrich Stampfer and journalists of Vorwärts.
+At our subtle encouragement, the Justice Ministry has dropped all persecution of Friedrich Stampfer and journalists of Vorwärts. Our party members quietly celebrate this outcome.
 
 @drop_case
 view-if: spd_in_government
 choose-if: spd_in_government and justice_minister_party = "SPD"
 unavailable-subtitle: [? if not spd_in_government : SPD not in government. ?] [? if spd_in_government and justice_minister_party != "SPD": The SPD does not control the Justice Ministry. ?]
-on-arrival: vortrial_dropped = 1; justice_minister_party = "DDP"; justice_minister = "Koch-Weser"
+on-arrival: vortrial_dropped = 1; justice_minister_party = "DDP"; justice_minister = "Koch-Weser"; left_dissent -= 10; labor_dissent -= 10; centrist_dissent -= 10; reformist_dissent -= 10; neorevisionist_dissent -= 10
 
-At our direction, the Justice Ministry has dropped all persecution of Friedrich Stampfer and journalists of Vorwärts. In retribution, President Hindenburg has fired Gustav Radbruch from the position of the justice minister.
+At our direction, the Justice Ministry has dropped all persecution of Friedrich Stampfer and journalists of Vorwärts. Our grassroots party members celebrate this victory.
+
+In retribution, President Hindenburg has fired Gustav Radbruch from the position of the justice minister.
 
 @let_persecute
 view-if: spd_in_government
@@ -46,9 +48,9 @@ The case progresses slowly, given the secrets involved, and there will be no det
 
 @pressure_drop
 view-if: spd_in_government and justice_minister_party != "SPD"
-on-arrival: vortrial_dropped = 1; dvp_relation -= 6; z_relation -= 6; coalition_dissent += 1; coalition_dissent += 2 if in_grand_coalition
+on-arrival: vortrial_dropped = 1; dvp_relation -= 6; z_relation -= 6; coalition_dissent += 1; coalition_dissent += 2 if in_grand_coalition; left_dissent -= 10; labor_dissent -= 10; centrist_dissent -= 10; reformist_dissent -= 10; neorevisionist_dissent -= 10
 
-We have pressured the Justice Ministry to drop the case against Vorwärts, greatly raising tensions with our coalition.
+We have pressured the Justice Ministry to drop the case against Vorwärts, greatly raising tensions with our coalition. Our grassroots party members applaud our firm stance.
 
 @nothing
 view-if: not spd_in_government
