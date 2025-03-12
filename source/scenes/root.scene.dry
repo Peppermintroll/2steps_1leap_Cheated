@@ -740,6 +740,7 @@ Q.workers_other += 5;
 Q.workers_kpd += 5;
 Q.sa_strength += 88;
 Q.sh_strength += 140;
+Q.rfb_strength += 100;
 Q.rural_dnvp += 15;
 Q.rural_nsdap += 10;
 Q.unemployed_nsdap += 18;
