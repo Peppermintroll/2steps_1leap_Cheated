@@ -12,7 +12,7 @@ new-page: true
 - @killadolf: Kill Hitler!
 - @nmode: Nightmare Mode
 - @other_changes: Other changes
-- @advice: New Achievements and how to get them
+- @advice: How to get new achievements (SPOILERS!)
 - @plans: Plans for the mod, ideas and feedback
 - @root: Back
 
@@ -72,7 +72,7 @@ The mod is largely feature-complete at this point, but I might revisit it at som
 
 = Achievements
 
-Warning: the following options contain spoilers.
+Which achievement are you trying to get?
 
 - @burger: Bürgerburger
 - @unter: Untergang
