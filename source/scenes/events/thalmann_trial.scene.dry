@@ -37,8 +37,8 @@ To the surprise of many, Thälmann is found guilty on just a few counts, and his
 @bribe_court
 title: Pull strings to get a guilty verdict no matter what.
 view-if: corrupt_judiciary >= 1 and justice_minister_party = "SPD"
-choose-if: resources >= corrupt_judiciary_costs
-on-arrival: resources -= corrupt_judiciary_costs; corrupt_judiciary += 1; spd_total_corruption += 1; corrupt_judiciary_costs += 1
+choose-if: resources >= 1
+on-arrival: resources -= 1; corrupt_judiciary += 1; spd_total_corruption += 1; corrupt_judiciary_costs += 1
 unavailable-subtitle: Not enough resources ([+ corrupt_judiciary_costs +] needed).
 go-to: mega_guilty_verdict
 
