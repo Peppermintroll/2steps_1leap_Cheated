@@ -90,6 +90,7 @@ Q.arrest_success = 0;
 Q.vortrial_seen = 0;
 Q.stampfer_arrested = 0;
 Q.criminal_spd_seen = 0;
+Q.thalmann_shamed = 0;
 
 Q.strike_term_seen = 0;
 // 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
