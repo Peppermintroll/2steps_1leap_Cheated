@@ -9,17 +9,11 @@ new-page: true
 "Two Steps Forward, One Leap Below" is an unofficial mod that lets you push certain initiatives beyond their intended limit and/or attempt unwise radical actions. It is neither historically accurate nor an endorsement of anything displayed therein.
 
 - @eatrich: Eat the Rich!
-- @killadolf: Kill Hitler + Government Corruption
+- @killadolf: Kill Hitler!
 - @nmode: Nightmare Mode
-- @olympics: 1932 Los Angeles Olympics
-- @fighting: Streetfighting
-- @military_update: Military Policy + New Bad Ending
-- @funraising: Fundraising
-- @interior_update: Interior Police
-- @ironman: Changes to Historical Mode
 - @other_changes: Other changes
-- @plans: Plans for the mod
-- @ideas: Ideas and feedback
+- @advice: New Achievements and how to get them
+- @plans: Plans for the mod, ideas and feedback
 - @root: Back
 
 @nmode
@@ -34,65 +28,35 @@ You can now play the game in Nightmare Mode. It is extremely brutal, unfair and 
 
 By popular demand, you can now add some cannibalism to your class struggle campaign. This dark path starts with some rallies, continues through government crisis points, and culminates with a troublesome headline.
 
+- @modstuff: Back
+
 @killadolf
 
 = LET'S KILL HITLER!
 
 There are not one, but two ways of killing Hitler. One involves abusing the laws of the nation, the other requires abusing the laws of physics.
 
-@olympics
-
-= Olympics
-
-If you consistently support workers' sports and cultural organizations, SPD athletes may get selected for the 1932 Olympics team. Their successes (and failures) will reflect on the party as a whole. A particularly strong showing may even raise the profile of socialism in the eyes of the American public, so should your team triumph, you might want to get in touch with the Socialist Party of America...
-                                                                                                                                                                                                                      
 - @modstuff: Back
-                                                                
-@fighting
-
-= Bash The Fash
-
-More Streetfighting options for a militarizing Reichsbanner: train to fight alongside the police or RFB, acquire some heavy-duty hardware from a loyal military, then go on the offensive and disrupt SA rallies. Having enough weapons will also unlock a new option on the Altona card, although that may not necessarily be a good thing.
-
-- @modstuff: Back
-
-@military_update
-
-= Military Policy and New Bad Ending
-
-If you cut the military budget all the way down to zero, you can try to disband the Reichswehr. You would need a cooperative judiciary, as well as sufficient popular support for pacifism, to accomplish that.
-  
-Conversely, if you keep increasing the military budget, you can restart the rearmament plan that had brought down the old government. However, unlike their historical counterparts, the Allied Powers will be unlikely to turn a blind eye to such developments. Disregard their warnings at your peril.
-
-- @modstuff: Back
-
-@funraising
-
-= Fundraising
-
-Dues can go all the way down to 0 now, effectively making party membership free. This will make you popular with the unemployed, but will stop you from fundraising again. They can also be increased way beyond reasonable limits, but the price of such greed may prove too heavy for the party.
-  
-- @modstuff: Back
-
-@interior_update
-
-= Interior Police
-
-Once you discover evidence of far-right plot to seize power, you can keep investigating even further, or possibly turn your attention in the opposite direction.
-
-- @modstuff: Back
-
-@ironman
-
-= Difficulty
-
-The limitations of Historical Mode are a separate setting now, in case you want to play without save/load or discards on easy or hard.
 
 @other_changes
 
-= Other Changes
+**Olympics:** If you consistently support workers' sports and cultural organizations, SPD athletes may get selected for the 1932 Olympics team. Their successes (and failures) will reflect on the party as a whole. A particularly strong showing may even raise the profile of socialism in the eyes of the American public, so should your team triumph, you might want to get in touch with the Socialist Party of America...
+                                                                                                                                                                                                                      
+**Bash The Fash:** More Streetfighting options for a militarizing Reichsbanner! Train to fight alongside the police or RFB, acquire some heavy-duty hardware from a loyal military, then go on the offensive and disrupt SA rallies. Having enough weapons will also unlock a new option on the Altona card, although that may not necessarily be a good thing...
 
-Added extra cosmetic feedback for repeatedly purging bureaucracy, new bonuses to Hirschfeld as an advisor, and a small joke if you're choosing between economic plans while Hilferding is a minister.
+**Crush The Commies:** For those who want to take things in the other direction, you can now take a more hostile approach to the KPD and Ernst Thälmann in particular.
+
+**Military Policy and New Bad Ending:** If you cut the military budget all the way down to zero, you can try to disband the Reichswehr. You would need a cooperative judiciary, as well as sufficient popular support for pacifism, to accomplish that. Conversely, if you keep increasing the military budget, you can restart the rearmament plan that had brought down the old government. However, unlike their historical counterparts, the Allied Powers will be unlikely to turn a blind eye to such developments. Disregard their warnings at your peril.
+
+**Fundraising:** Dues can go all the way down to 0 now, effectively making party membership free. This will make you popular with the unemployed, but will stop you from fundraising again. They can also be increased way beyond reasonable limits, but the price of such greed may prove too heavy for the party. Regardless of your dues, if your relations with the Communists are bad enough, you may get a visit from the RFB at your fundraising events.
+  
+**Investigations:** Once you discover evidence of far-right plot to seize power, you can keep investigating even further, or possibly turn your attention in the opposite direction.
+
+**Difficulty changes:** Besides the introduction of Nightmare Mode, the limitations of Historical Mode are a separate setting now, in case you want to play without save/load or discards on easy or hard.
+
+**Endless mode:** You can keep playing after 1934. 
+
+**And more:** Lots of small changes scattered across all content.
 
 - @modstuff: Back
 
@@ -100,14 +64,73 @@ Added extra cosmetic feedback for repeatedly purging bureaucracy, new bonuses to
 
 = Future Plans
 
-The mod is largely feature-complete at this point, but I might revisit it at some point.
+The mod is largely feature-complete at this point, but I might revisit it at some point. If you have any ideas or feedback on my mod, you can ask me on the game's discord server or on Reddit (I'm u/Passionario). Please also mention any bugs you may find.
 
 - @modstuff: Back
 
-@ideas
+@advice
 
-= Ideas and Feedback
+= Achievements
 
-If you have any ideas or feedback on my mod, you can ask me on the game's discord server or on Reddit (I'm u/Passionario). Please also mention any bugs you may find.
+Warning: the following options contain spoilers.
+
+- @burger: Bürgerburger
+- @unter: Untergang
+- @feh: Fehlende Zündung
+- @olympix: Olympiasieger
+- @amerika: Sozialismus mit Amerikanischen Merkmalen
+- @eher_wie: Eher wie das Reichsbanned
+- @red_alert: Roter Alarm Null
+- @baddies: Sind wir die Bösen?
+- @kpd_wtb: Wittorf-Thälmann-Blutmai Plan
+- @modstuff: Back
+
+@burger
+
+To support cannibalism, rally for class warfare at every opportunity, don't form a Weimar coalition, delay adopting an economic plan until the Hunger Chancellor event, and propose eating the rich in response to the unemployment insurance crisis.
 
 - @modstuff: Back
+
+@unter
+
+There are two ways to kill Hitler. The first is to try to arrest or deport him for his crimes, real or fabricated, while having a militarized police and Reichsbanner. If he dies in a firefight, you will get the achievement.
+
+The other option is to investigate the far right 6 or more times, build a radio station, and use the new option on the Media card.
+
+- @advice: Back
+
+@feh
+
+Investigate the far right 3 or more times, then investigate the far left.
+
+- @advice: Back
+
+@olympix
+
+The Olympics will take place in 1932. To prepare, repeatedly play the Party Organizations card and pick the option to support sports. 
+
+- @advice: Back
+
+@eher_wie
+
+Ban and unban all other paramilitaries, or play on Nightmare Mode without having the Justice Ministry.
+
+- @advice: Back
+
+@red_alert
+
+Investigate the far right 6 or more times, build a radio station, and use the new option on the Media card.
+
+- @advice: Back
+
+@baddies
+
+Ban the KPD demonstration in May 1929 and militarize Reichsbanner. When the March on Altona happens, set a deadly trap.
+
+- @advice: Back
+
+@kpd_wtb
+
+Discover the Wittorf affair and choose to publicize the materials. Ban the KPD demonstration in May 1929. Corrupt the interior police and Justice ministry to fabricate a case against Thälmann. Kill him during arrest or pull strings to get him sentenced to death. Wonder whether it was worth it.
+
+- @advice: Back
