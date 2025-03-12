@@ -43,7 +43,7 @@ How should we campaign against the Plan?
 - @irrational: The Young Plan is simply the least rational choice for Germany.
 
 @nationalism
-on-arrival: nationalism += 15; pacifism -= 10; workers_nsdap += 8; rural_nsdap += 8; catholics_spd -= 8; rural_dvp -= 8; sa_strength += 120; sh_strength += 100; strife += 1
+on-arrival: nationalism += 15; pacifism -= 10; workers_nsdap += 8; rural_nsdap += 8; catholics_spd -= 8; rural_dvp -= 8; sa_strength += 120; sh_strength += 100; strife += 1; left_coup_progress += 2
 
 We rail hard for nationalism and standing against the international conspiracy of nations. The referendum fails by a single vote. The results cause an uproar and thousands of rioters take to streets. Nationalist sentiment is blazing bright, and the right-wing parties are using our campaign against the Plan as a recruitment tool.
 
@@ -53,6 +53,6 @@ on-arrival: nationalism += 5; pacifism -= 1; workers_nsdap += 5; rural_nsdap += 
 The referendum narrowly fails, with almost 45% of voters supporting it. The results cause an uproar and thousands of rioters take to streets. Nationalist sentiment is blazing bright, and the right-wing parties are using our campaign against the Plan as a recruitment tool.
 
 @no_plan
-on-arrival: nationalism += 5; workers_spd -= 3; old_middle_spd -= 3; new_middle_spd -= 3; pacifism -= 1; workers_nsdap += 5; rural_nsdap += 5; rural_dnvp -= 5; catholics_spd -= 5; rural_dvp -= 5;
+on-arrival: nationalism += 5; workers_spd -= 3; old_middle_spd -= 3; new_middle_spd -= 3; pacifism -= 1; workers_nsdap += 5; rural_nsdap += 5; rural_dnvp -= 5; catholics_spd -= 5; rural_dvp -= 5; left_coup_progress += 1
 
 The referendum eventually fails without our presence in the campaign, with almost 30% of voters supporting it. Nationalist sentiment is inflammed, and the right-wing parties are using our silence around the Plan as a tacit admission of its faults. Our silence has only emboldened the Right, especially the NSDAP.
