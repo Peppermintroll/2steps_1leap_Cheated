@@ -44,5 +44,103 @@ subtitle: Collect, increase or reduce dues.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6
-go-to: fundraising
+go-to: main_fund; rfb_disrupt if rfb_strength > 150 and not rfb_banned and (left_coup_progress >= 5 or kpd_relation < 20)
 
+@rfb_disrupt
+
+The Communist RFB protesters are disrupting Otto Wels's fundraising events! 
+
+- @police_protect: Call the police to disperse them.
+- @rb_protect: Use the Reichsbanner to disperse them.
+- @together_protect: Get the police and Reichsbanner to suppress KPD together.
+- @cancel: Cancel all fundraising for now.
+
+@police_protect
+view-if: spd_prussia == 1
+on-arrival: police_protect_success = prussian_police_loyalty * prussian_police_militancy * prussian_police_strength*2 - rfb_militancy*rfb_strength;
+go-to: police_protect_win if police_protect_success >= 0; police_protect_lose if police_protect_success < 0
+
+@police_protect_win
+go-to: main_fund
+
+The police enthusiastically rout the Communists, so we can proceed with our fundraising.
+
+@police_protect_lose
+on-arrival: strife += 1; workers_kpd += 8
+
+Unfortunately, the police were unable or unwilling to hold back the RFB street troops. The Communists have won this show of strength.
+
+@together_protect
+view-if: spd_prussia == 1 and police_rb_team = 1 and rb_banned = 0
+on-arrival: together_protect_success = prussian_police_loyalty*prussian_police_militancy*prussian_police_strength*2 + rb_strength*rb_militancy - rfb_militancy*rfb_strength;
+go-to: together_protect_win if together_protect_success >= 0; together_protect_lose if together_protect_success < 0
+
+@together_protect_win
+go-to: main_fund
+
+The police and the Reichsbanner successfully routed the Communists, so we can attend to our fundraising as usual.
+
+@together_protect_lose
+on-arrival: strife += 1; workers_kpd += 8; 
+
+Unfortunately, even the combined effort of the police and Reichsbanner was not enough to hold back the fury of the RFB. The Communists have won this show of strength.
+
+@rb_protect
+view-if: rb_banned = 0
+on-arrival: rb_success = rb_strength*rb_militancy - rfb_strength*rfb_militancy; strife += 1
+go-to: rb_protect_win if rb_success >= 0; rb_protect_lose if rb_success < 0
+
+@rb_protect_win
+go-to: main_fund
+The Reichsbanner has successfully dispersed the RFB! Our fundraising can go head as usual.
+
+@rb_protect_lose
+on-arrival: workers_kpd += 8; rb_strength -= 50
+
+Unfortunately, the Reichsbanner was not able to hold back the RFB protestors. The Communists have won this show of strength.
+
+@cancel
+on-arrival: workers_kpd += 8;
+
+The Communists have won this show of strength.
+
+
+@main_fund
+
+= Fundraising
+
+For better or for worse, the party cannot exist without money.
+
+- @maintain: Maintain our current dues.
+- @reduce: Reduce dues.
+- @abolish: Abolish dues.
+- @increase: Increase dues.
+
+@maintain
+subtitle: [+ dues +] resources gained.
+on-arrival: resources += dues;
+
+We maintain our current dues.
+
+@reduce
+subtitle: [+ dues - 1 +] resources gained.
+view-if: dues > 1
+on-arrival: dues -= 1; resources += dues; left_dissent -= 8; center_dissent -= 8; reformist_dissent -= 8; labor_dissent -= 8
+
+Our current members appreciate this, but no one decides to join a party because of the low dues. 
+
+@abolish
+subtitle: No more fundraising. People might like that.
+view-if: dues == 1
+on-arrival: dues = 0; left_dissent -= 8; center_dissent -= 8; reformist_dissent -= 8; labor_dissent -= 8; unemployed_spd += 12*(1-dissent)
+
+Our current members appreciate this, and many unemployed people who previously could not afford membership decide to join the party.
+
+@increase
+subtitle: [+ dues + 1 +] resources gained. [? if unemployed >= 15 : Given the present economic situation, this may be painful. ?][? if dues == 4 : Dues are already rather high; increasing them might reduce our membership. ?][? if dues == 5 : Dues are already backbreaking; increasing them will devastate our membership. ?][? if dues >= 6 : Dues are already impossible; increasing them will obliterate our membership. ?]
+on-arrival: dues += 1; resources += dues; workers_spd -= 3; unemployed_spd -= 3; workers_spd -= 10 if unemployed >= 15; unemployed_spd -= 10 if unemployed >= 15; workers_spd -= 3*dues if dues >= 5; unemployed_spd -= 3*dues if dues >= 5; workers_spd -= 3 if dues >= 6; unemployed_spd -= 3 if dues >= 6;  rural_spd -= 3 if dues >= 6; new_middle_spd -= 3*dues if dues >= 7; old_middle_spd += 3*dues*(1-dissent) if dues >= 6;
+view-if: dues <= 13
+
+[? if dues <= 4 : Our members grumble at this, and some of the less committed members leave. ?][? if dues == 5 : Our members are angry at this, and many of them leave. ?][? if dues >= 6 : Our current members outraged by this, and scores of them leave. ?] But now, we have access to additional resources. 
+
+[? if unemployed >= 15 : Because of the presently high unemployment, our members are feeling the extra burden hard. ?][? if dues >= 6 : Oddly enough, we get a minor influx of capitalists who view increasingly expensive participation in our party as a new investment vehicle. ?]
