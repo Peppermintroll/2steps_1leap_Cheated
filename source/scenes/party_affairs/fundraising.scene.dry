@@ -54,6 +54,7 @@ go-to: rb_protect_win if rb_success >= 0; rb_protect_lose if rb_success < 0
 
 @rb_protect_win
 go-to: main_fund
+
 The Reichsbanner has successfully dispersed the RFB! Our fundraising can go head as usual.
 
 @rb_protect_lose
