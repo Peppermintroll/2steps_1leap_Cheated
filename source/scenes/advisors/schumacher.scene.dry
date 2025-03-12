@@ -20,9 +20,73 @@ subtitle: An emergency infusion of resources.
 view-if: difficulty < 3 and dues > 1
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; resources += dues
+on-arrival: advisor_action_timer = 6
+go-to: main_fund; rfb_disrupt if rfb_strength > 150 and not rfb_banned and (left_coup_progress >= 5 or kpd_relation < 20)
+
+@rfb_disrupt
+
+The Communist RFB protesters are disrupting our emergency fundraising event! 
+
+- @police_protect: Call the police to disperse them.
+- @rb_protect: Use the Reichsbanner to disperse them.
+- @together_protect: Get the police and Reichsbanner to suppress KPD together.
+- @cancel: Cancel all fundraising for now.
+
+@police_protect
+view-if: spd_prussia == 1
+on-arrival: police_protect_success = prussian_police_loyalty * prussian_police_militancy * prussian_police_strength*2 - rfb_militancy*rfb_strength;
+go-to: police_protect_win if police_protect_success >= 0; police_protect_lose if police_protect_success < 0
+
+@police_protect_win
+on-arrival: resources += dues
+
+The police enthusiastically rout the Communists, so we can proceed with our fundraising. We have gained +[+ dues +] resources.
+
+@police_protect_lose
+on-arrival: strife += 1; workers_kpd += 8
+
+Unfortunately, the police were unable or unwilling to hold back the RFB street troops. The Communists have won this show of strength.
+
+@together_protect
+view-if: spd_prussia == 1 and police_rb_team = 1 and rb_banned = 0
+on-arrival: together_protect_success = prussian_police_loyalty*prussian_police_militancy*prussian_police_strength*2 + rb_strength*rb_militancy - rfb_militancy*rfb_strength;
+go-to: together_protect_win if together_protect_success >= 0; together_protect_lose if together_protect_success < 0
+
+@together_protect_win
+on-arrival: resources += dues
+
+The police and the Reichsbanner successfully routed the Communists, so we can attend to our fundraising as usual. We have gained +[+ dues +] resources.
+
+@together_protect_lose
+on-arrival: strife += 1; workers_kpd += 8; 
+
+Unfortunately, even the combined effort of the police and Reichsbanner was not enough to hold back the fury of the RFB. The Communists have won this show of strength.
+
+@rb_protect
+view-if: rb_banned = 0
+on-arrival: rb_success = rb_strength*rb_militancy - rfb_strength*rfb_militancy; strife += 1
+go-to: rb_protect_win if rb_success >= 0; rb_protect_lose if rb_success < 0
+
+@rb_protect_win
+on-arrival: resources += dues
+
+The Reichsbanner has successfully dispersed the RFB! We have gained +[+ dues +] resources.
+
+@rb_protect_lose
+on-arrival: workers_kpd += 8; rb_strength -= 50
+
+Unfortunately, the Reichsbanner was not able to hold back the RFB protestors. The Communists have won this show of strength.
+
+@cancel
+on-arrival: workers_kpd += 8;
+
+The Communists have won this show of strength.
+
+@main_fund
+on-arrival: resources += dues
 
 We have gained +[+ dues +] resources.
+
 
 @build_reichsbanner
 title: Reichsbanner
