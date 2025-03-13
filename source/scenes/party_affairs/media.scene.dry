@@ -51,7 +51,7 @@ This has been our media course historically, and it has successfully paved over 
 title: Publish novel research on gender and sexuality.
 view-if: hirschfeld_advisor = 1
 subtitle: -1 resource
-choose-if: homosexual_rights >= 1
+choose-if: homosexual_rights >= 1 and resources >= 1
 unavailable-subtitle: [? if homosexual_rights == 0 : The research subject is criminalized under current laws. ?][? if resources < 1: Not enough resources. ?]
 on-arrival: resources -=1; advisor_action_timer = 6; trans_progress += 1; catholics -= 4*trans_progress; coalition_dissent += 1 if (in_grand_coalition or in_weimar_coalition); coalition_dissent += 1 if ((in_grand_coalition or in_weimar_coalition) and homosexual_rights < 3); catholics_spd -= 4; z_relation -= 4; catholics = 2 if catholics <= 2; catholic_strike += 1; catholic_strike += 1 if trans_progress >= 3
 
