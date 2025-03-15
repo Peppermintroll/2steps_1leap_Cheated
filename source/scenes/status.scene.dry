@@ -204,7 +204,7 @@ New Middle Class: SPD: [+ new_middle_spd_normalized2 +]%, Z: [+ new_middle_z_nor
 
 Old Middle Class: SPD: [+ old_middle_spd_normalized2 +]%, Z: [+ old_middle_z_normalized2 +]%, KPD: [+ old_middle_kpd_normalized2 +]%, DDP: [+ old_middle_ddp_normalized2 +]%, DVP: [+ old_middle_dvp_normalized2 +]%; DNVP: [+ old_middle_dnvp_normalized2 +]%, NSDAP: [+ old_middle_nsdap_normalized2 +]%, Others: [+ old_middle_other_normalized2 +]% [? if sapd_formed: SAPD: [+ old_middle_sapd_normalized2 +]% ?]
 
-Rural: SPD: [+ rural_spd_normalized +]%, Z: [+ rural_z_normalized2 +]%, KPD: [+ rural_kpd_normalized2 +]%, DDP: [+ rural_ddp_normalized2 +]%, DVP: [+ rural_dvp_normalized2 +]%; DNVP: [+ rural_dnvp_normalized2 +]%, NSDAP: [+ rural_nsdap_normalized2 +]%, Others: [+ rural_other_normalized2 +]% [? if sapd_formed: SAPD: [+ rural_sapd_normalized2 +]% ?]
+Rural: SPD: [+ rural_spd_normalized2 +]%, Z: [+ rural_z_normalized2 +]%, KPD: [+ rural_kpd_normalized2 +]%, DDP: [+ rural_ddp_normalized2 +]%, DVP: [+ rural_dvp_normalized2 +]%; DNVP: [+ rural_dnvp_normalized2 +]%, NSDAP: [+ rural_nsdap_normalized2 +]%, Others: [+ rural_other_normalized2 +]% [? if sapd_formed: SAPD: [+ rural_sapd_normalized2 +]% ?]
 
 Unemployed: SPD: [+ unemployed_spd_normalized2 +]%, Z: [+ unemployed_z_normalized2 +]%, KPD: [+ unemployed_kpd_normalized2 +]%, DDP: [+ unemployed_ddp_normalized2 +]%, DVP: [+ unemployed_dvp_normalized2 +]%; DNVP: [+ unemployed_dnvp_normalized2 +]%, NSDAP: [+ unemployed_nsdap_normalized2 +]%, Others: [+ unemployed_other_normalized2 +]% [? if sapd_formed: SAPD: [+ unemployed_sapd_normalized2 +]% ?]
 
