@@ -74,10 +74,10 @@ on-arrival: rb_militancy += (0.1*(prussian_police_loyalty)); sa_strength += 50; 
 The Reichsbanner and the loyal sections of the Prussian police are learning to effectively fight alongside each other.
 
 @military_training
-view-if: (military_minister_party == "SPD") or president == "Braun" and rb_banned = 0
+view-if: (military_minister_party == "SPD" or president == "Braun") and rb_banned = 0 and reichswehr_militancy >= 0.5
 choose-if: (reichswehr_loyalty >= 0.6 or corrupt_military >= 2)
 unavailable-subtitle: The military would rather shoot Reichsbanner members than help them. 
-on-arrival: rb_militancy += (0.1*(reichswehr_militancy)); reichswehr_loyalty -= 0.1; reichswehr_militancy *= 0.9; reichswehr_loyalty -= 0.1 if military_rearmed <= 0; reichswehr_loyalty -= 0.1 if corrupt_military >= 2; sa_strength += 50; military_rb += 1; kpd_relation -= 5; dvp_relation -= 5; z_relation -= 5; z_relation -= 5 if historical_mode; coalition_dissent += 1; kpd_coalition_dissent += 1; pro_republic -= 5; pacifism -= 3; coup_progress += 1; spd_total_corruption += 1; democratization -= 1;
+on-arrival: rb_militancy += 0.1; rb_militancy += (0.1*(reichswehr_militancy)); reichswehr_loyalty -= 0.1; reichswehr_militancy *= 0.9; reichswehr_loyalty -= 0.1 if military_rearmed <= 0; sa_strength += 50; military_rb += 1; kpd_relation -= 5; dvp_relation -= 5; z_relation -= 5; z_relation -= 5 if historical_mode; coalition_dissent += 1; kpd_coalition_dissent += 1; pro_republic -= 5; pacifism -= 3; coup_progress += 1; left_coup_progress += 1; spd_total_corruption += 1; democratization -= 1;
 max-visits: 1
 
 Some of the military equipment [? if military_rearmed >= 1: from the ongoing rearmament ?][? if military_rearmed < 1: left over from the last war ?] has inexplicably vanished from Reichswehr storehouses and ended up in the hands of our activists. While our loyalists in Reichswehr turn a blind eye, everyone else decries our corruption and abuse of power.
