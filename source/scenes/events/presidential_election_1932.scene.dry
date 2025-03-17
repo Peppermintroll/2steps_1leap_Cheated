@@ -4,7 +4,7 @@ view-if: year = 1932 and (month = 4 or month = 5) and presidential_election_seen
 frequency: 1000
 max-visits: 1
 new-page: true
-on-arrival: braun_campaign = 0; hitler_support_hindenburg = 0; presidential_election_seen = 1; nsdap_candidate = "Hitler" if (hitler_deported == 0 and hitler_dead == 0) else nsdap_candidate = "Göring"; kpd_candidate = "Thälmann" if (thalmann_dead == 0) else kpd_candidate = "Remmele"; kpd_candidate_full = "Ernst Thälmann" if (thalmann_dead == 0) else kpd_candidate = "Hermann Remmele";
+on-arrival: braun_campaign = 0; hitler_support_hindenburg = 0; presidential_election_seen = 1; nsdap_candidate = "Hitler" if (hitler_deported == 0 and hitler_dead == 0) else nsdap_candidate = "Göring"; kpd_candidate = "Thälmann" if (thalmann_dead == 0) else kpd_candidate = "Remmele"; kpd_candidate_full = "Ernst Thälmann" if (thalmann_dead == 0) else kpd_candidate_full = "Hermann Remmele";
 tags: event
 go-to: election_algorithm
 set-jump: pres_election
@@ -12,7 +12,7 @@ face-image: img/hindenburg_election.jpg
 
 @pres_election
 
-The presidential election is coming up soon. [? if spd_in_government = 0 : While the position of Chancellor is typically more important, recent governments have depended on the president's emergency decree powers, making the office vital. ?] [? if hitler_deported==0 : The Nazis will run Hitler, while the KPD will run Thälmann. A victory for Hitler would mean the end of parliamentary democracy, and the beginning of an era of unspeakable horrors. ?][? if hitler_deported==1 : Since Hitler has been deported, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for Hitler, who, despite his legal persecution, retains a popular base who wishes to see him returned to Germany. Meanwhile, the KPD will run [+ kpd_candidate_full +] ?][? if hitler_dead==1 : Since Hitler is dead, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for the late Hitler, who, despite being dead, retains a popular base who wishes to see his vile work continued in Germany. Meanwhile, the KPD will run [+ kpd_candidate_full +]. ?]
+The presidential election is coming up soon. [? if spd_in_government = 0 : While the position of Chancellor is typically more important, recent governments have depended on the president's emergency decree powers, making the office vital. ?] [? if (hitler_deported==0 and hitler_dead==0) : The Nazis will run Hitler, while the KPD will run [+ kpd_candidate_full +]. A victory for Hitler would mean the end of parliamentary democracy, and the beginning of an era of unspeakable horrors. ?][? if hitler_deported==1 : Since Hitler has been deported, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for Hitler, who, despite his legal persecution, retains a popular base who wishes to see him returned to Germany. Meanwhile, the KPD will run [+ kpd_candidate_full +] ?][? if hitler_dead==1 : Since Hitler is dead, the Nazis will run Hermann Göring in his stead. He is widely seen as a proxy for the late Hitler, who, despite being dead, retains a popular base who wishes to see his vile work continued in Germany. Meanwhile, the KPD will run [+ kpd_candidate_full +]. ?]
 [? if sapd_formed: The SAPD, our former leftists, are supporting [+ kpd_candidate +] of the KPD, and will likely share an endorsement with the Communists. ?]
 
 # if hitler is deported, who would nsdap run? Duesterberg? or Goering?
@@ -86,7 +86,7 @@ if (Q.z_relation >= 55 || (Q.z_relation > 35 && Q.z_party_leader == "Joos")) {
 go-to: z_failed if z_support_braun = 0 or (z_support_braun == 2 and historical_mode); z_success if z_support_braun = 1; z_partial if z_support_braun = 2 and not historical_mode
 max-visits: 1
 
-We remind the Center leaders of Hindenburg's anti-Catholicism, and try to convince them that Hindenburg's path will eventually lead to Hitler. We also remind them of the successes they've had as part of the Weimar coalition in Prussia with Otto Braun, and our support for the Center candidate Wilhelm Marx in the 1925 presidential election.
+We remind the Center leaders of Hindenburg's anti-Catholicism, and try to convince them that Hindenburg's path will eventually lead to [+ nsdap_leader +]. We also remind them of the successes they've had as part of the Weimar coalition in Prussia with Otto Braun, and our support for the Center candidate Wilhelm Marx in the 1925 presidential election.
 
 @z_success
 go-to: braun_campaign
@@ -411,7 +411,7 @@ on-arrival: president = "Hindenburg"; judicial_reform -= 1 if (nightmare >= 1 an
 As expected, the incumbent Hindenburg wins the presidency. Let's hope he continues to keep the Nazis out of power.
 
 @thalmann_wins
-on-arrival: president = "Thälmann"; kpd_relation = 80;
+on-arrival: president = kpd_candidate; kpd_relation = 80;
 
 [+ kpd_candidate_full +] of the KPD has won the presidency. Immediately, the far-right launches a coup attempt against the government. We have no choice but to unite with the KPD against the fascists...
 
