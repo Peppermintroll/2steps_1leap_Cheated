@@ -82,6 +82,11 @@ Q.anti_labor_seen = 0;
 Q.pro_tariffs_seen = 0;
 Q.hitler_return = 0;
 Q.hitler_comeback_timer = 0;
+Q.blackmail_timer = 0;
+Q.corrupt_judiciary_exposed = 0;
+Q.corrupt_interior_exposed = 0;
+Q.corrupt_police_exposed = 0;
+Q.corrupt_military_exposed = 0;
 Q.privatize_welfare = 0;
 Q.women_betrayed = 0;
 Q.women_left_spd = 0;
@@ -537,7 +542,7 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
             'dealing_with_toleration', 'labor_rights', 'anti_women', 'anti_labor', 
             'constitutional_reform', 'pro_tariffs', 'education_science', 'curriculum',
             // events
-            'emergency_cuts', 'unemployment_insurance',
+            'emergency_cuts', 'unemployment_insurance', 'blackmail', 
             'sa_ban', 'sh_ban', 'papen_chancellor', 'hitler_comeback', 
             'kpd_policy', 'kpd_ultimatum', 'popular_front_dispute', 'thalmann_trial', 
             'high_inflation', 'banking_crisis', 'march_on_berlin', 'understanding_enemy', 'meme_collapse'];
