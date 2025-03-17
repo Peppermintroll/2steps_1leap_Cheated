@@ -13,7 +13,6 @@ new-page: true
 - @nmode: Nightmare Mode
 - @other_changes: Other changes
 - @advice: How to get new achievements (SPOILERS!)
-- @plans: Plans for the mod, ideas and feedback
 - @root: Back
 
 @nmode
@@ -57,14 +56,6 @@ There are not one, but two ways of killing Hitler. One involves abusing the laws
 **Endless mode:** You can keep playing after 1934. 
 
 **And more:** Lots of small changes scattered across all content.
-
-- @modstuff: Back
-
-@plans
-
-= Future Plans
-
-The mod is largely feature-complete at this point, but I might revisit it at some point. If you have any ideas or feedback on my mod, you can ask me on the game's discord server or on Reddit (I'm u/Passionario). Please also mention any bugs you may find.
 
 - @modstuff: Back
 
