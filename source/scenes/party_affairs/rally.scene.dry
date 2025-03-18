@@ -5,7 +5,7 @@ tags: party_affairs
 view-if: rally_timer <= 0
 on-arrival: month_actions += 1; rally_timer = 6
 card-image: img/protest.jpg
-go-to: main_rally; sa_disrupt if sa_strength > 180 and not sa_banned
+go-to: main_rally if (sa_banned or sa_strength <= 180); sa_disrupt if (sa_strength > 180 and not sa_banned)
 
 @sa_disrupt
 
@@ -48,7 +48,8 @@ on-arrival: strife += 1; workers_nsdap += 3;
 Unfortunately, even the combined effort of the police and Reichsbanner was not enough to hold back the SA mob. The Nazis have won this show of strength.
 
 @rb_protect
-view-if: rb_banned = 0
+choose-if: rb_banned = 0
+unavailable-subtitle: Reichsbanner is banned and cannot assemble.
 on-arrival: rb_success = rb_strength*rb_militancy - sa_strength*sa_militancy; strife += 1
 go-to: rb_protect_win if rb_success >= 0; rb_protect_lose if rb_success < 0
 
