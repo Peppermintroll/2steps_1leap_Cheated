@@ -26,9 +26,14 @@ choose-if: budget >= 1
 unavailable-subtitle: Not enough budget.
 on-arrival: budget -= 1; total_spd_corruption -= 1 if corrupt_judiciary >= 1; total_spd_corruption -= 1 if corrupt_interior >= 1;  total_spd_corruption -= 1 if corrupt_police >= 1;  total_spd_corruption -= 1 if corrupt_military >= 1; corrupt_judiciary -= 1; corrupt_interior -= 1; corrupt_police -= 1; corrupt_military -= 1; coalition_dissent += 1; left_coalition_dissent += 1; blackmail_timer += 4; revelation = 1
 
-Our flurry of terminations and emergency reforms raises more than a few eyebrows. We can only hope that this will be enough.
+Our flurry of terminations and emergency reforms raises more than a few eyebrows, but perhaps they will make a difference.
+
+Do we also try to pay off the blackmailer?
+
+- @pay_them: Yes, we need more time.
+- @nothing: No, this should be enough.
 
 @nothing
 on-arrival: blackmail_timer = 1; revelation = 1
 
-We refuse to be blackmailed. Perhaps it's a matter of principles, perhaps we simply can't afford to. Either way, the hammer will drop soon.
+We refuse to be blackmailed [? if blackmail_seen >= 3: any further ?]. Perhaps it's a matter of principles, perhaps we simply can't afford to. Either way, the hammer will drop soon.
