@@ -1,0 +1,34 @@
+title: Blackmailed!
+new-page: true
+subtitle: Our corruption has not gone unnoticed...
+view-if: year >= 1929 and (spd_total_corruption + nightmare) >= 3 and blackmail_timer = 0 and revelation = 0
+on-arrival: blackmail_seen += 1; blackmail_seen += 1 if blackmail_seen <= 1
+tags: event
+
+= Blackmailed!
+
+We have been contacted [? if blackmail_seen <= 3 : once more ?] by an anonymous source who claims to have evidence of our widespread corruption. Their message includes a list of [? if corrupt_judiciary >= 1 : judges, ?][? if corrupt_interior >= 1: officers of interior security, ?][? if corrupt_police >= 1 : Prussian police officers, ?][? if corrupt_military >= 1: Reichswehr generals, ?] and other individuals that we have bribed, cajoled or threatened into doing our bidding.
+
+- @pay_them: Pay them off.
+- @clean_up: Try to quickly clean up our act.
+- @nothing: Let them do their worst.
+
+@pay_them
+choose-if: resources >= blackmail_seen
+unavailable-subtitle: Not enough resources ([+ blackmail_seen +] needed).
+on-arrival: resources -= blackmail_seen; blackmail_timer += 11
+
+Our ransom buys us a modicum of silence, but not the peace of mind. [? if blackmail_seen >= 3: Especially now that we know to expect another letter soon. ?]
+
+@clean_up
+view-if: spd_in_government
+choose-if: budget >= 1
+unavailable-subtitle: Not enough budget.
+on-arrival: budget -= 1; total_spd_corruption -= 1 if corrupt_judiciary >= 1; total_spd_corruption -= 1 if corrupt_interior >= 1;  total_spd_corruption -= 1 if corrupt_police >= 1;  total_spd_corruption -= 1 if corrupt_military >= 1; corrupt_judiciary -= 1; corrupt_interior -= 1; corrupt_police -= 1; corrupt_military -= 1; coalition_dissent += 1; left_coalition_dissent += 1; blackmail_timer += 4; revelation = 1
+
+Our flurry of terminations and emergency reforms raises more than a few eyebrows. We can only hope that this will be enough.
+
+@nothing
+on-arrival: blackmail_timer = 1; revelation = 1
+
+We refuse to be blackmailed. Perhaps it's a matter of principles, perhaps we simply can't afford to. Either way, the hammer will drop soon.
