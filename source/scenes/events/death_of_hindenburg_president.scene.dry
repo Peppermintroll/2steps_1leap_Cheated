@@ -29,9 +29,9 @@ This might be the Nazis' last hurrah; the party's internal contradictions are he
 
 The DNVP will nominate Franz Seldte, leader of the Stahlhelm paramilitary group. He will be endorsed by many of Hindenburg's most right-wing supporters. They are working more closely with the Nazis than before, and in the second round, the far-right parties are expected to consolidate into a single anti-republican front.
 
-[? if kpd_party_leader = "Conciliators" : Given the failure of Thälmann's previous runs for president, and his declining stature in the party, the KPD will be running Willi Münzenberg, a controversial figure sometimes called the "Red millionaire". He is a media magnate who leads a number of Communist front organizations. ?]
-[? if kpd_party_leader = "Thälmann" : This will be Ernst Thälmann's third run for president as leader of the KPD. Despite his previous electoral defeats, he retains the loyalty of the party as well as Stalin's Soviet Union. ?]
-[? if kpd_party_leader = "Remmele" : The KPD will be running Hermann Remmele, a far-left hardliner who stepped into leadership after Thälmann's death. He enjoys full support of his Soviet backers, as well as the street militias. ?]
+[? if kpd_candidate = "Münzenberg" : Given the failure of Thälmann's previous runs for president, and his declining stature in the party, the KPD will be running Willi Münzenberg, a controversial figure sometimes called the "Red millionaire". He is a media magnate who leads a number of Communist front organizations. ?]
+[? if kpd_candidate = "Thälmann" : This will be Ernst Thälmann's third run for president as leader of the KPD. Despite his previous electoral defeats, he retains the loyalty of the party as well as Stalin's Soviet Union. ?]
+[? if kpd_candidate = "Remmele" : The KPD will be running Hermann Remmele, a far-left hardliner who stepped into leadership after Thälmann's death. He enjoys full support of his Soviet backers, as well as the street militias. ?]
 
 Many republicans of the Center, [+ ddp_name +], and SPD float the idea of running Hugo Eckener, a nationally renowed Zeppelin captain, as a unity candidate. While he has some nationalistic views, he is also ardently opposed to Nazism.
 
