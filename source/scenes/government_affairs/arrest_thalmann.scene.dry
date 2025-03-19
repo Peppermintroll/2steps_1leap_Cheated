@@ -49,7 +49,7 @@ The confrontation ends with the police and Reichsbanner prevailing, capturing Th
 In Thälmann's absence, Hermann Remmele has become the interim leader of the Communist party.
 
 @force_kill
-on-arrival: thalmann_dead = 1; rfb_strength = sa_strength*0.7; rb_strength = rb_strength*0.9; prussian_police_strength = prussian_police_strength*0.9; strife += 2; kpd_coalition_dissent += 8; workers_kpd -= 6; new_middle_kpd -= 6; old_middle_kpd -= 6; rural_kpd -= 4; unemployed_kpd -= 4; coup_progress -= 2; left_coup_progress += 5; kpd_leader = "Remmele"; attack_thalmann_seen = 1; kpd_relation -= 35; communist_coalition -= 6; workers_spd -= 4; unemployed_spd -= 3; left_dissent += 60
+on-arrival: thalmann_dead = 1; rfb_strength = sa_strength*0.7; rb_strength = rb_strength*0.9; prussian_police_strength = prussian_police_strength*0.9; strife += 2; kpd_coalition_dissent += 8; workers_kpd -= 6; new_middle_kpd -= 6; old_middle_kpd -= 6; rural_kpd -= 4; unemployed_kpd -= 4; coup_progress -= 2; left_coup_progress += 5; kpd_party_leader = "Remmele"; attack_thalmann_seen = 1; kpd_relation -= 35; communist_coalition -= 6; workers_spd -= 4; unemployed_spd -= 3; left_dissent += 60
 
 Just as we intended, the confrontation escalates into an all-out firefight between the police, the Reichsbanner, and the left-wing militia. The final casualty count amounts to over a hundred wounded and about two dozen dead, the latter including Thälmann himself. 
 
@@ -73,7 +73,7 @@ if (total_allied_strength > enemy_strength) {
 go-to: force_fail if arrest_success == 0; force_kill if arrest_success = 1
 
 @peace_success
-on-arrival: thalmann_arrested = 1; rfb_strength = rfb_strength*0.8; workers_kpd -= 6; new_middle_kpd -= 6; old_middle_kpd -= 6; rural_kpd -= 4; unemployed_kpd -= 4; coup_progress -= 2; left_coup_progress -= 2; kpd_leader = "Remmele"; thalmann_trial_timer += 6; left_dissent += 10
+on-arrival: thalmann_arrested = 1; rfb_strength = rfb_strength*0.8; workers_kpd -= 6; new_middle_kpd -= 6; old_middle_kpd -= 6; rural_kpd -= 4; unemployed_kpd -= 4; coup_progress -= 2; left_coup_progress -= 2; kpd_party_leader = "Remmele"; thalmann_trial_timer += 6; left_dissent += 10
 
 Somehow, the plan worked! There was minimal resistance to Thälmann's arrest. This is a sign of weakness, and his captivity makes organizing difficult, impeding the Communists' effort to win more votes. Thälmann's trial is set to take place in a few months' time.
 
