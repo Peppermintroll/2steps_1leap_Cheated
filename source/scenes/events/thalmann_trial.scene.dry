@@ -20,12 +20,12 @@ title: Let the court decide his fate.
 go-to: mega_guilty_verdict if (corrupt_judiciary > 2 and judicial_reforms < 1); innocent_verdict if (corrupt_judiciary < 2 and judicial_reforms > 1); guilty_verdict if (corrupt_judiciary == 2 or judicial_reforms == 1)
 
 @innocent_verdict
-on-arrival: kpd_leader = "Thälmann"; rfb_strength += 200; rb_strength *= 0.7; rfb_militancy += 0.5; workers_kpd += 12; unemployed_kpd += 12; rural_kpd += 12; attack_thalmann_seen += 1; kpd_coalition_dissent += 5; coalition_dissent += 2; reformist_dissent += 12; left_dissent -= 12; left_strength += 8; reformist_strength -= 8; left_coup_progress += 2
+on-arrival: kpd_party_leader = "Thälmann"; rfb_strength += 200; rb_strength *= 0.7; rfb_militancy += 0.5; workers_kpd += 12; unemployed_kpd += 12; rural_kpd += 12; attack_thalmann_seen += 1; kpd_coalition_dissent += 5; coalition_dissent += 2; reformist_dissent += 12; left_dissent -= 12; left_strength += 8; reformist_strength -= 8; left_coup_progress += 2
 
 With the case against him so obviously fabricated, Thälmann is found not guilty on all counts. Our gambit has failed and we will pay the price.
 
 @mega_guilty_verdict
-on-arrival: kpd_leader = "Remmele"; rfb_strength *= 0.6; workers_kpd -= 6; unemployed_kpd -= 6; rural_kpd -= 6; attack_thalmann_seen += 1; kpd_coalition_dissent += 5; coalition_dissent -= 2; reformist_dissent -= 12; left_dissent += 12; left_strength -= 8; reformist_strength += 8; sa_strength += 80; sh_strength += 80; thalmann_dead = 1; left_coup_progress += 1
+on-arrival: kpd_party_leader = "Remmele"; rfb_strength *= 0.6; workers_kpd -= 6; unemployed_kpd -= 6; rural_kpd -= 6; attack_thalmann_seen += 1; kpd_coalition_dissent += 5; coalition_dissent -= 2; reformist_dissent -= 12; left_dissent += 12; left_strength -= 8; reformist_strength += 8; sa_strength += 80; sh_strength += 80; thalmann_dead = 1; left_coup_progress += 1
 
 To the shock of many, Thälmann is found guilty on all counts. Indeed, the combined gravity of his alleged crimes is sufficient to merit death penalty. The Communist party mourns his fate, while the Nazis use it as a recruiting tool to demonstrate the evils of socialists.
 
@@ -47,7 +47,7 @@ title: Pull strings to get a not-guilty verdict.
 subtitle: This has gone too far.
 view-if: corrupt_judiciary >= 1 and justice_minister_party = "SPD"
 choose-if: resources >= 1
-on-arrival: resources -= 1; kpd_leader = "Thälmann"; rfb_strength += 200; rfb_militancy += 0.5; workers_kpd += 12; unemployed_kpd += 12; rural_kpd += 12; attack_thalmann_seen += 1; kpd_coalition_dissent += 5; coalition_dissent += 2; reformist_dissent += 12; left_dissent -= 12; left_strength += 8; reformist_strength -= 8
+on-arrival: resources -= 1; kpd_party_leader = "Thälmann"; rfb_strength += 200; rfb_militancy += 0.5; workers_kpd += 12; unemployed_kpd += 12; rural_kpd += 12; attack_thalmann_seen += 1; kpd_coalition_dissent += 5; coalition_dissent += 2; reformist_dissent += 12; left_dissent -= 12; left_strength += 8; reformist_strength -= 8
 unavailable-subtitle: Not enough resources.
 
 Thälmann is found not guilty on all counts. KPD celebrates his freedom, and we are left to ponder whether any of this was worth it.
