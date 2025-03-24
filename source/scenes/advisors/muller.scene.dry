@@ -17,11 +17,11 @@ Müller is a former [? if chancellor = "Müller": and current ?] Chancellor, and
 @coalition
 title: Negotiating with the Coalition
 subtitle: Müller can improve our relationships with our coalition partners.
-choose-if: advisor_action_timer <= 0 and spd_in_government = 1
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government: The SPD is not in government. ?]
+choose-if: advisor_action_timer <= 0 and (in_weimar_coalition or in_grand_coalition or in_popular_front)
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government: The SPD is not in government. ?][? if (spd_in_government and not (in_weimar_coalition or in_grand_coalition or in_popular_front)) : We are not in a coalition with the bourgeois parties. ?]
 on-arrival: advisor_action_timer = 6; coalition_dissent -= 1 if spd_in_government = 1 and coalition_dissent > 0; z_relation += 5; ddp_relation += 5; dvp_relation += 5
 
-We have improved our relations with the Zentrum, [+ ddp_name +], and DVP, and reduced tensions with the coalition.
+We have improved our relations with the [? if in_grand_coalition : Center (Zentrum) Party, [+ ddp_name +], and DVP, ?][? if not in_grand_coalition: Center (Zentrum) Party and [+ ddp_name +], ?] and reduced tensions with the coalition.
 
 
 @toleration
