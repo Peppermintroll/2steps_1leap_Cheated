@@ -43,6 +43,7 @@ Q.usa_soc = 0;
 Q.attack_hitler_seen = 0;
 Q.attack_thalmann_seen = 0;
 Q.attack_otto_braun_seen = 0;
+Q.endless = 0;
 Q.redalert = 0;
 Q.hitler_dead = 0;
 Q.thalmann_dead = 0;
