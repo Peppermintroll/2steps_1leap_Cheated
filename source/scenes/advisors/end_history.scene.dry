@@ -1,0 +1,21 @@
+title: End of History
+is-pinned-card: true
+tags: advisor
+card-image: img/portraits/francis_fukuyama.png
+view-if: year >= 1935
+new-page: true 
+
+= End of History
+
+Have you finally decided to let go?
+
+- @finale: Yes. 
+- @keep: Not yet!
+
+@finale
+subtitle: This will end the game.
+go-to: game_over_1934
+
+@keep
+
+As you wish.
