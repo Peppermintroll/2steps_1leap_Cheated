@@ -37,9 +37,9 @@ Current interior police loyalty: [+ interior_police_loyalty : loyalty +]
 subtitle: -1 resources
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
-on-arrival: interior_police_loyalty -= 0.1; corrupt_interior += 1; spd_total_corruption += 1
+on-arrival: interior_police_loyalty += 0.1; corrupt_interior += 1; spd_total_corruption += 1
 
-The interior police already has its fair share of corruption, so adding some more is not difficult. Each officer with a gambling debt or a penchant for illicit vices is someone we can get into our pocket and promote into a higher rank. This makes us no friends among their colleagues, who resent being passed over for promotions in favor of our puppets.
+The interior police already has its fair share of corruption, so adding some more is not difficult. Each officer with a gambling debt or a penchant for illicit vices is someone we can get into our pocket and promote into a higher rank. 
 
 @investigate_corruption
 go-to: investigate_corruption_success if interior_police_loyalty >= 0.5; investigate_corruption_failure if interior_police_loyalty < 0.5
