@@ -105,7 +105,7 @@ if (Q.factory_takeovers >= 2) {
     this.achieve("syndikalismus");
 }
 // Sind wir die Bösen? - prove that KPD was completely right about you
-if (Q.blutmai && Q.altona_guilt && Q.thalmann_dead && Q.thalmann_shamed)) {
+if (Q.blutmai && Q.altona_guilt && Q.thalmann_dead && Q.thalmann_shamed) {
     this.achieve("sind_wir_die_bosen");
 }
 if (Q.redalert) {
