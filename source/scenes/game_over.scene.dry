@@ -104,8 +104,8 @@ if ((Q.nationalization_progress >= 1 && Q.wtb_implemented >= 1) || (Q.wtb_implem
 if (Q.factory_takeovers >= 2) {
     this.achieve("syndikalismus");
 }
-// Sind wir die Bösen - be responsible for Blutmai and Altona Blood Sunday
-if (Q.blutmai && Q.altona_guilt) {
+// Sind wir die Bösen? - prove that KPD was completely right about you
+if (Q.blutmai && Q.altona_guilt && Q.thalmann_dead && Q.thalmann_shamed)) {
     this.achieve("sind_wir_die_bosen");
 }
 if (Q.redalert) {
@@ -117,10 +117,6 @@ if (Q.hitler_dead) {
 // Fehlende Zündung - prevent the Reichstag fire plot
 if (Q.reichstag_burn && Q.chancellor_party != "NSDAP") {
     this.achieve("fehlende_zundung");
-}
-// Wittorf-Thälmann-Blutmai Plan - humiliate, injure and kill Ernst Thälmann
-if (Q.blutmai && Q.thalmann_dead && Q.thalmann_shamed) {
-    this.achieve('kpd_wtb');
 }
 // Stolperstein - lose the civil war against Hitler.
 if ((Q.chancellor_party == "NSDAP" || Q.chancellor == "Hitler" || Q.president == "Hitler") && Q.total_defeat) {
@@ -468,7 +464,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if game_achievement_olympiasieger: **Olympiasieger** - bring home the gold from Los Angeles. ?]
 
-[? if game_achievement_sind_wir_die_bosen: **Sind wir die Bösen?** - be responsible for Blutmai and Altona Bloody Sunday. ?]
+[? if game_achievement_sind_wir_die_bosen: **Sind wir die Bösen?** - prove that KPD was completely right about you. ?]
 
 [? if game_achievement_fehlende_zundung: **Fehlende Zündung** - prevent the Reichstag fire. ?]
 
@@ -477,8 +473,6 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if game_achievement_eher_wie_das_reichsbanned: **Eher wie das Reichsbanned** - ban the Reichsbanner. ?]
 
 [? if game_achievement_roter_alarm_null: **Roter Alarm Null** - discover and complete an impossible plot. ?]
-
-[? if game_achievement_kpd_wtb : **Wittorf-Thälmann-Blutmai Plan** - humiliate, injure and kill Ernst Thälmann. ?]
 
 
 = Completed Achievements Overall
@@ -594,7 +588,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if achievement_fehlende_zundung: **Fehlende Zündung** - prevent the Reichstag fire. ?]
 
-[? if achievement_sind_wir_die_bosen: **Sind wir die Bösen?** - be responsible for Blutmai and Altona Bloody Sunday. ?]
+[? if achievement_sind_wir_die_bosen: **Sind wir die Bösen?** - prove that KPD was completely right about you. ?]
 
 [? if achievement_amerikanischen: **Sozialismus mit Amerikanischen Merkmalen** - empower the Socialist Party of America. ?]
 
@@ -603,8 +597,6 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 [? if achievement_eher_wie_das_reichsbanned: **Eher wie das Reichsbanned** - ban the Reichsbanner. ?]
 
 [? if (achievement_roter_alarm_null and achievement_eher_wie_das_reichsbanned and achievement_amerikanischen and achievement_fehlende_zundung and achievement_sind_wir_die_bosen and achievement_olympiasieger and achievement_untergang and achievement_burgherburger): **Lasst uns diese Scheiße in Grund und Boden laufen lassen!** - over multiple playthroughs, complete all other original achievements of version 1.0 'Two Steps Forward, One Leap Below' mod. ?]
-
-[? if achievement_kpd_wtb : **Wittorf-Thälmann-Blutmai Plan** - humiliate, injure and kill Ernst Thälmann. ?]
 
 = Incomplete Achievements
 
@@ -718,7 +710,7 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if not achievement_fehlende_zundung: **Fehlende Zündung** - prevent the Reichstag fire. ?]
 
-[? if not achievement_sind_wir_die_bosen: **Sind wir die Bösen?** - be responsible for Blutmai and Altona Bloody Sunday. ?]
+[? if not achievement_sind_wir_die_bosen: **Sind wir die Bösen?** - prove that KPD was completely right about you. ?]
 
 [? if not achievement_amerikanischen: **Sozialismus mit Amerikanischen Merkmalen** - empower the Socialist Party of America. ?]
 
@@ -728,7 +720,6 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if not (achievement_roter_alarm_null and achievement_eher_wie_das_reichsbanned and achievement_amerikanischen and achievement_fehlende_zundung and achievement_sind_wir_die_bosen and achievement_olympiasieger and achievement_untergang and achievement_burgherburger): **Lasst uns diese Scheiße in Grund und Boden laufen lassen!** - over multiple playthroughs, complete all other original achievements of version 1.0 'Two Steps Forward, One Leap Below' mod. ?]
 
-[? if not achievement_kpd_wtb : **Wittorf-Thälmann-Blutmai Plan** - humiliate, injure and kill Ernst Thälmann. ?]
 
 @end_game
 game-over: true
