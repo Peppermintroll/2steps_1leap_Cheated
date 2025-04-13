@@ -33,6 +33,7 @@ subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: We do not have the resources.
 on-arrival: resources -= 1; reichswehr_loyalty += 0.05; corrupt_military += 1; spd_total_corruption += 1; blackmail_timer = 3
+
 The military brass has more cars and more summer homes. If the worst comes to pass, perhaps they'll remember what they're fighting for. 
 
 @decrease_funding
