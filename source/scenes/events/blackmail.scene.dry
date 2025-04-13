@@ -1,7 +1,7 @@
 title: Blackmailed!
 new-page: true
 subtitle: Our corruption has not gone unnoticed...
-view-if: year >= 1929 and (spd_total_corruption + nightmare) >= 3 and blackmail_timer = 0 and revelation = 0
+view-if: year >= 1929 and (spd_total_corruption + nightmare) >= 2 and blackmail_timer = 0 and revelation = 0
 on-arrival: blackmail_seen += 1; blackmail_seen += 1 if blackmail_seen <= 1
 tags: event
 
