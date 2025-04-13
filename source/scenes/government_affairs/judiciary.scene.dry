@@ -42,7 +42,7 @@ We try to remove the most obviously biased and corrupt jurists, while leaving mo
 subtitle: -1 resources
 unavailable-subtitle: Not enough resources ([+ corrupt_judiciary_costs +] needed).
 choose-if: resources >= corrupt_judiciary_costs
-on-arrival: resources -= corrupt_judiciary_costs; democratization -= 2; coalition_dissent -= 1 if (in_grand_coalition == 1 and coalition_dissent >= 1); pro_republic -= 4; coup_progress -= 0.5 if coup_progress >= 1; corrupt_judiciary += 1; spd_total_corruption += 1; corrupt_judiciary_costs += 1
+on-arrival: resources -= corrupt_judiciary_costs; democratization -= 2; coalition_dissent -= 1 if (in_grand_coalition == 1 and coalition_dissent >= 1); pro_republic -= 4; coup_progress -= 0.5 if coup_progress >= 1; corrupt_judiciary += 1; spd_total_corruption += 1; corrupt_judiciary_costs += 1; blackmail_timer = 3
 
 [? if corrupt_judiciary_costs <= 2: We investigate the most corrupt jurists and make discreet contributions to ensure that their rulings are favorable to us and our coalition allies. 
 [? if corrupt_judiciary_costs >= 3: We have already bought out the most corrupt jurists. The loyalties of the rest comes at an increasingly high price. ?]
