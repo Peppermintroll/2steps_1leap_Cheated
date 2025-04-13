@@ -16,15 +16,74 @@ We have been contacted [? if blackmail_seen <= 3 : once more ?] by an anonymous 
 @pay_them
 choose-if: resources >= blackmail_seen
 unavailable-subtitle: Not enough resources ([+ blackmail_seen +] needed).
-on-arrival: resources -= blackmail_seen; blackmail_timer += 11
+on-arrival: resources -= blackmail_seen; blackmail_timer += 8
 
 Our ransom buys us a modicum of silence, but not the peace of mind. [? if blackmail_seen >= 3: Especially now that we know to expect another letter soon. ?]
 
 @clean_up
-view-if: spd_in_government
+choose-if: spd_in_government
+unavailable-subtitle: We are not in government.
+
+Undoing our corruption effects without exposing ourselves is going to be a difficult challenge, so we can only focus our efforts on one area. What will it be?
+
+- @clean_judiciary
+- @clean_interior
+- @clean_police
+- @clean_military
+- @pay_them: Maybe we should just pay off the blackmailer for now.
+- @nothing: Forget it, let them do their worst.
+
+@clean_judiciary
+title: The judicial system.
+view-if: corrupt_judiciary >= 1
 choose-if: budget >= 1
 unavailable-subtitle: Not enough budget.
-on-arrival: budget -= 1; total_spd_corruption -= 1 if corrupt_judiciary >= 1; total_spd_corruption -= 1 if corrupt_interior >= 1;  total_spd_corruption -= 1 if corrupt_police >= 1;  total_spd_corruption -= 1 if corrupt_military >= 1; corrupt_judiciary -= 1; corrupt_interior -= 1; corrupt_police -= 1; corrupt_military -= 1; coalition_dissent += 1; left_coalition_dissent += 1; blackmail_timer += 4; revelation = 1
+on-arrival: budget -= 1; total_spd_corruption -= 1; corrupt_judiciary -= 1; coalition_dissent += 1; left_coalition_dissent += 1; blackmail_timer += 4
+
+Our flurry of terminations and emergency reforms raises more than a few eyebrows, but perhaps they will make a difference.
+
+Do we also try to pay off the blackmailer?
+
+- @pay_them: Yes, we need more time.
+- @nothing: No, this should be enough.
+
+
+@clean_judiciary
+title: The Prussian police.
+view-if: corrupt_police >= 1
+choose-if: budget >= 1
+unavailable-subtitle: Not enough budget.
+on-arrival: budget -= 1; total_spd_corruption -= 1; corrupt_police -= 1; coalition_dissent += 1; left_coalition_dissent += 1; blackmail_timer += 4
+
+Our flurry of terminations and emergency reforms raises more than a few eyebrows, but perhaps they will make a difference.
+
+Do we also try to pay off the blackmailer?
+
+- @pay_them: Yes, we need more time.
+- @nothing: No, this should be enough.
+
+
+@clean_interior
+title: The interior police.
+view-if: corrupt_interior >= 1
+choose-if: budget >= 1
+unavailable-subtitle: Not enough budget.
+on-arrival: budget -= 1; total_spd_corruption -= 1; corrupt_interior -= 1; coalition_dissent += 1; left_coalition_dissent += 1; blackmail_timer += 4
+
+Our flurry of terminations and emergency reforms raises more than a few eyebrows, but perhaps they will make a difference.
+
+Do we also try to pay off the blackmailer?
+
+- @pay_them: Yes, we need more time.
+- @nothing: No, this should be enough.
+
+
+@clean_military
+title: Reichswehr.
+view-if: corrupt_military >= 1
+choose-if: budget >= 1
+unavailable-subtitle: Not enough budget.
+on-arrival: budget -= 1; total_spd_corruption -= 1; corrupt_military -= 1; coalition_dissent += 1; left_coalition_dissent += 1; blackmail_timer += 4
 
 Our flurry of terminations and emergency reforms raises more than a few eyebrows, but perhaps they will make a difference.
 
@@ -34,6 +93,6 @@ Do we also try to pay off the blackmailer?
 - @nothing: No, this should be enough.
 
 @nothing
-on-arrival: blackmail_timer = 1; revelation = 1
+on-arrival: blackmail_timer += 1; revelation = 1
 
 We refuse to be blackmailed [? if blackmail_seen >= 3: any further ?]. Perhaps it's a matter of principles, perhaps we simply can't afford to. Either way, the hammer will drop soon.
