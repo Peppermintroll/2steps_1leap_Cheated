@@ -1,0 +1,49 @@
+title: Exposed!
+subtitle: The blackmailer made good on their threats...
+new-page: true
+view-if: spd_total_corruption >= 1 and blackmail_timer = 0 and revelation = 1
+on-arrival: revelation = 2; extra_justice += (corrupt_judiciary * 5); extra_interior += (corrupt_interior * 5);  extra_military += (corrupt_military * 5); extra_police += corrupt_police; coup_progress += corrupt_judiciary; left_coup_progress += corrupt_judiciary; interior_police_loyalty -= (corrupt_interior / 10); prussian_police_loyalty -= (corrupt_police / 20); reichswehr_loyalty -= (corrupt_military / 20); pro_republic -= 8
+face-image: img/weltbune.jpg
+total-visits: 1
+tags: event
+
+= Exposed!
+
+True to their word, the blackmailer has leaked evidence of our widespread corruption to the press and the public. The names and faces of [? if extra_justice >= 1 : judges, ?][? if extra_interior >= 1: officers of interior security, ?][? if extra_police >= 1 : Prussian police officers, ?][? if extra_military >= 1: Reichswehr generals, ?] and other individuals that we have bribed now grace every newspaper and magazine in Germany. 
+
+[? if spd_in_government : The public is furious and clamors for the resignation of our government. ?][? if (spd_in_government and president != "Braun") : President [+ president +] agrees and demands that we do so. ?]
+
+- @resign: We have little choice but to resign.
+- @survive: We are strong enough to weather this storm.
+- @nothing: This will hurt our electoral chances.
+
+@resign
+view-if: spd_in_government
+on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; in_weimar_coalition = 0; in_popular_front = 0; spd_toleration = 0; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; finance_minister_party = "DVP"; agriculture_minister_party = "Z"; labor_minister = "Stegerwald"; interior_minister = "Wirth"; finance_minister = "Moldenhauer"; economic_minister = "Curtius"; justice_minister = "Koch-Weser"; foreign_minister = "Stresemann"; agriculture_minister = "Dietrich"; reichswehr_minister = "Groener";  coalition_dissent = 0; pro_republic -= 5; old_middle_spd -= 3; new_middle_spd -= 2; workers_spd -= 3 if pro_republic < 50; workers_spd -= 4 if pro_republic < 40; old_middle_nsdap += 4 if pro_republic < 50; new_middle_nsdap += 3 if pro_republic < 50; corrupt_police = 0; corrupt_interior = 0; corrupt_justice = 0; corrupt_military = 0; spd_total_corruption = 0
+go-to: let_it_happen_hindenburg if president != "Braun"; let_it_happen_braun if president == "Braun"
+
+@let_it_happen_hindenburg
+on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; welfare -= 2;
+
+Chancellor Brüning has been appointed as the head of an acting government, consisting solely of the bourgeois parties. He immediately proceeds to fire all of our compromised appointees and cut welfare spending substantially.
+
+New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+
+@let_it_happen_braun
+on-arrival: spd_caretaker = 1; corrupt_police = 0; corrupt_interior = 0; corrupt_justice = 0; corrupt_military = 0; spd_total_corruption = 0
+
+To salvage what remains of our reputation, we sack all of our corrupted appointees and resign. Chancellor [+ chancellor +] remains as the head of a disgraced caretaker government, but no longer has the power to enact new policies. 
+
+New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+
+@survive
+view-if: spd_in_government and (spd_majority or constructive_vonc) and president = "Braun"
+on-arrival: workers_spd -= 6; workers_kpd += 6; old_middle_spd -= 8; old_middle_nsdap += 8; new_middle_spd -= 8; new_middle_dvp += 4; new_middle_z += 4; coup_progress += 4; left_coup_progress += 4; capital_strike += 2; pro_republic -= 15
+
+What's the point of having power if you do not abuse it? Let them rage, so as long as they also obey.
+
+@nothing
+view-if: spd_in_government = 0
+on-arrival: workers_spd -= 6; workers_kpd += 6; old_middle_spd -= 6; old_middle_nsdap += 6; new_middle_spd -= 6; new_middle_dvp += 3; new_middle_z += 3; corrupt_police = 0; corrupt_interior = 0; corrupt_justice = 0; corrupt_military = 0; spd_total_corruption = 0
+
+Chancellor [+ chancellor +] immediately proceeds to fire all of our compromised appointees. Eventually, the public moves on to the next scandal and we are left to rot in helplessness and disgrace.
