@@ -1237,12 +1237,12 @@ Rudolf Wissell of the SPD has been appointed labor minister.
 
 @interior
 title: Interior Ministry
-subtitle: Taking the Interior Ministry is expected of us. The Interior Ministry controls domestic security.
-unavailable-subtitle: We do not have enough leverage.
+subtitle: [? if extra_interior = 0 : Taking the Interior Ministry is expected of us. ?][? if extra_interior >= 1 : Taking the Interior Ministry was once expected of us, before all the scandals. ?] The Interior Ministry controls domestic security.
+unavailable-subtitle: We do not have enough leverage. 
 tags: mins_1928
-choose-if: leverage >= 5
+choose-if: leverage >= (5 + extra_interior)
 view-if: interior_minister_party != "SPD"
-on-arrival: leverage -= 5; interior_minister_party = "SPD"; interior_minister = "Severing"
+on-arrival: leverage -= (5 + extra_interior); interior_minister_party = "SPD"; interior_minister = "Severing"
 go-to: ministries
 
 Carl Severing of the SPD has been appointed Interior Minister.
@@ -1273,12 +1273,12 @@ Robert Schmidt of the SPD has been appointed Economic Minister.
 
 @justice
 title: Justice Ministry
-subtitle: The Justice Ministry controls the courts.
-unavailable-subtitle: We do not have enough leverage.
+subtitle: The Justice Ministry controls the courts. [? if extra_justice >= 1 : Our past transgressions have eroded the public's trust in our ability to administer justice. ?]
+unavailable-subtitle: We do not have enough leverage. 
 tags: mins_1928
-choose-if: leverage >= 10 
+choose-if: leverage >= (10 + extra_justice)
 view-if: justice_minister_party != "SPD"
-on-arrival: leverage -= 10; justice_minister_party = "SPD"; justice_minister = "Radbruch"
+on-arrival: leverage -= (10 + extra_justice); justice_minister_party = "SPD"; justice_minister = "Radbruch"
 go-to: ministries
 
 Gustav Radbruch of the SPD has been appointed Justice Minister.
@@ -1310,12 +1310,12 @@ Fritz Baade of the SPD has been appointed Agriculture Minister.
 
 @reichswehr
 title: Reichswehr Ministry
-subtitle: The Ministry responsible for the armed forces is not typically our domain; General Groener and the bourgeois-conservatives will be displeased.
+subtitle: The Ministry responsible for the armed forces is not typically our domain; General Groener and the bourgeois-conservatives will be displeased. [? if extra_military >= 1 : Our previous meddling and inept bribery has not been forgotten. ?]
 unavailable-subtitle: We do not have enough leverage.
 tags: mins_1928
-choose-if: leverage >= 15 
+choose-if: leverage >= (15 + extra_military)
 view-if: reichswehr_minister_party != "SPD" and disband_military = 0
-on-arrival: leverage -= 15; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"
+on-arrival: leverage -= (15 + extra_military); reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"
 go-to: ministries
 
 Julius Leber of the SPD has been appointed Reichswehr Minister.
@@ -1339,7 +1339,7 @@ go-to: ministries
 @drop_interior
 title: Drop the Interior Ministry.
 view-if: interior_minister_party = "SPD"
-on-arrival: interior_minister_party = "Z"; interior_minister = "Wirth"; leverage += 5;
+on-arrival: interior_minister_party = "Z"; interior_minister = "Wirth"; leverage += (5 + extra_interior);
 tags: drop_mins_1928
 go-to: ministries
 
@@ -1360,7 +1360,7 @@ go-to: ministries
 @drop_justice
 title: Drop the Justice Ministry.
 view-if: justice_minister_party = "SPD"
-on-arrival: justice_minister_party = "DDP"; justice_minister = "Koch-Weser"; leverage += 10;
+on-arrival: justice_minister_party = "DDP"; justice_minister = "Koch-Weser"; leverage += (10 + extra_justice);
 tags: drop_mins_1928
 go-to: ministries
 
@@ -1381,6 +1381,6 @@ go-to: ministries
 @drop_reichswehr
 title: Drop the Reichswehr Ministry.
 view-if: reichswehr_minister_party = "SPD"
-on-arrival: reichswehr_minister_party = "I"; reichswehr_minister = "Groener"; leverage += 15;
+on-arrival: reichswehr_minister_party = "I"; reichswehr_minister = "Groener"; leverage += (15 + extra_military);
 tags: drop_mins_1928
 go-to: ministries
