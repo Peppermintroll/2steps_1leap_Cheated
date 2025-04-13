@@ -48,7 +48,7 @@ Do we also try to pay off the blackmailer?
 - @nothing: No, this should be enough.
 
 
-@clean_judiciary
+@clean_police
 title: The Prussian police.
 view-if: corrupt_police >= 1
 choose-if: budget >= 1
