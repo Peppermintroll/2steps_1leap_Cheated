@@ -7,7 +7,7 @@ tags: event
 
 = Blackmailed!
 
-We have been contacted [? if blackmail_seen >= 2 : once more ?] by an anonymous source who claims to have evidence of our widespread corruption. Their message includes a list of [? if corrupt_judiciary >= 1 : judges, ?][? if corrupt_interior >= 1: officers of interior security, ?][? if corrupt_police >= 1 : Prussian police officers, ?][? if corrupt_military >= 1: Reichswehr generals, ?] and other individuals that we have bribed, cajoled or threatened into doing our bidding.
+We have been contacted [? if blackmail_seen >= 2 : once more ?] by an anonymous source who claims to have evidence of our widespread corruption. Their message includes a list of [? if corrupt_judiciary >= 1 : judges, ?][? if corrupt_interior >= 1: officers of interior security, ?][? if corrupt_prussian_police >= 1 : Prussian police officers, ?][? if corrupt_military >= 1: Reichswehr generals, ?] and other individuals that we have bribed, cajoled or threatened into doing our bidding.
 
 - @pay_them: Pay them off.
 - @clean_up: Try to quickly clean up our act.
