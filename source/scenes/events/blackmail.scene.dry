@@ -51,7 +51,7 @@ Do we also try to pay off the blackmailer?
 
 @clean_police
 title: The Prussian police.
-view-if: corrupt_police >= 1
+view-if: corrupt_prussian_police >= 1
 choose-if: budget >= 1
 unavailable-subtitle: Not enough budget.
 on-arrival: budget -= 1; total_spd_corruption -= 1; corrupt_police -= 1; coalition_dissent += 1; left_coalition_dissent += 1; blackmail_timer += 4
