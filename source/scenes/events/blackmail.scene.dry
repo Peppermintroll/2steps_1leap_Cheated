@@ -14,8 +14,9 @@ We have been contacted [? if blackmail_seen >= 2 : once more ?] by an anonymous 
 - @nothing: Let them do their worst.
 
 @pay_them
-choose-if: resources >= blackmail_seen
-unavailable-subtitle: Not enough resources ([+ blackmail_seen +] needed).
+choose-if: resources >= (blackmail_seen + 1)
+subtitle: -[+ (blackmail_seen + 1) +] resources.
+unavailable-subtitle: Not enough resources ([+ (blackmail_seen + 1) +] needed).
 on-arrival: resources -= blackmail_seen; blackmail_timer += 8
 
 Our ransom buys us a modicum of silence, but not the peace of mind. [? if blackmail_seen >= 2: Especially now that we know to expect another letter soon. ?]
