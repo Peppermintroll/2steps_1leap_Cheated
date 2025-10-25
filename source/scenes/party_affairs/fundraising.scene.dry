@@ -81,7 +81,7 @@ For better or for worse, the party cannot exist without money.
 
 @maintain
 subtitle: 10000 resources and budget gained.
-on-arrival: resources += 100000; budget += 100000;
+on-arrival: resources += 100000; budget += 100000; kpd_relation += 10000; z_relation += 10000; dvp_relation += 10000;
 
 We maintain our current dues.
 
