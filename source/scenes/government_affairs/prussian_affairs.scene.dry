@@ -33,7 +33,7 @@ We can enact policies in Prussia.
 
 @police_loyalty
 view-if: prussian_police_loyalty < 1
-on-arrival: prussian_police_loyalty += 0.1
+on-arrival: prussian_police_loyalty += 5; prussian_police_strength += 2000; prussian_police_militancy += 2000;
 
 # increase police loyalty
 The police have historically been overrun with reactionaries, and we are trying to change this, little by little. [? if prussian_police_loyalty >= 0.65: We have improved the training and recruitment process to select for a broader demographic than the traditional conservatives, and to put a tighter leash on their political activity. ?] [? if prussian_police_loyalty >= 0.75: In addition, we set up committees to investigate the ranks of the police and remove those with far-right sympathies. ?] It is a slow and arduous work[? if prussian_police_loyalty >= 0.85:  , but one that continues to bear fruit ?].
