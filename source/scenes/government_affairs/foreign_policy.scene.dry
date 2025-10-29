@@ -34,13 +34,13 @@ What should our foreign policy priority be?
 
 @improve_west
 title: Improve our relations with the Western Allies.
-on-arrival: west_relation += 2; reparations_negotiation += 1
+on-arrival: west_relation += 200; reparations_negotiation += 100
 
 The key to peace in Europe is a rapproachment between France and Germany. We are taking steps towards that rapproachment. [? if young_plan_seen == 0 : This is difficult to do when France is occupying a major portion of Germany's territory, but we are working on that part. ?]
 
 @improve_east
 title: Improve our relations with our eastern neighbors.
-on-arrival: east_relation += 2;
+on-arrival: east_relation += 200;
 
 We also aim to improve relations with our eastern neighbors, Poland and Czechoslovakia, who are righfully terrified of German aggression. Hopefully we can convince them of our peaceful intentions.
 
@@ -59,7 +59,7 @@ The Soviets are asking for economic and developmental assistance. They are still
 @soviet_economic_aid_yes_mil
 choose-if: budget >= 1
 subtitle: -1 budget
-on-arrival: budget -= 1; soviet_relation += 1; reichswehr_strength += 20; reichswehr_loyalty += 0.05; foreign_goal_completed += 1; world_war_two += 2 if reichswehr_strength >= 250
+on-arrival: budget -= 1; soviet_relation += 1000; reichswehr_strength += 20; reichswehr_loyalty += 0.05; foreign_goal_completed += 1; world_war_two += 2 if reichswehr_strength >= 250
 
 The Soviets are pleased that we have sent them aid, and have agreed to help train our military. The Reichswehr appreciates our support. 
 
@@ -68,7 +68,7 @@ The Soviets are pleased that we have sent them aid, and have agreed to help trai
 @soviet_economic_aid_yes
 choose-if: budget >= 1
 subtitle: -1 budget
-on-arrival: budget -= 1; soviet_relation += 2; coalition_dissent += 1; foreign_goal_completed += 1
+on-arrival: budget -= 1; soviet_relation += 20000; coalition_dissent += 1; foreign_goal_completed += 1
 
 The Soviets are pleased that we have sent them aid, and have not asked for anything specific in exchange. Our coalition partners are less pleased.
 
@@ -123,7 +123,7 @@ Immediately, France and other neighboring countries lodge their protests. The lo
 title: Negotiate regarding our remaining obligations from the Treaty of Versailles.
 subtitle: [? if young_plan_seen == 1 : After passing the Young Plan, France has committed to withdrawing from the Rhineland. Now, we must see if they can reduce our reparations further, given the economic depression. ?]
 view-if: reparations > -2 and reparations_negotiation < 3
-on-arrival: west_relation += 1; reparations_negotiation += 1; reparations_negotiation += 1 if pacifism >= 3; reparations_negotiations += 1 if nationalism <= 50; reparations_negotiation += 1 if west_relation >= 3
+on-arrival: west_relation += 1000; reparations_negotiation += 100; reparations_negotiation += 1 if pacifism >= 3; reparations_negotiations += 1 if nationalism <= 50; reparations_negotiation += 1 if west_relation >= 3
 
 Negotiations procede smoothly for the most part. The Western powers are convinced of Germany's sincerity and goodwill. [? if nationalism <= 50 or pacifism >= 3 : They are pleased to see that we are renouncing militarism. ?]
 
@@ -173,7 +173,7 @@ The Allies are disappointed by our refusal.
 @support_austria
 title: Diplomatically support Austrian democracy against the Dollfuß dictatorship.
 view-if: austrian_parliament_seen = 1 and austrian_civil_war_seen = 0
-on-arrival: sdapo_strength += 1; left_dissent -= 3; center_dissent -= 3
+on-arrival: sdapo_strength += 1000; left_dissent -= 3; center_dissent -= 3
 
 We provide verbal backing to Austrian democracy, wage a war of words against Austrofascism, and promulgate additional trade sanctions. Time will tell if it will be enough.
 
@@ -182,7 +182,7 @@ title: Provide material support to Austrian democracy against the Dollfuß dicta
 subtitle: -1 budget
 choose-if: budget >= 1
 view-if: austrian_parliament_seen = 1 and austrian_civil_war_seen = 0
-on-arrival: budget -= 1; sdapo_strength += 3; left_dissent -= 6; center_dissent -= 6
+on-arrival: budget -= 1; sdapo_strength += 3000; left_dissent -= 6; center_dissent -= 6
 
 In public, we provide verbal backing to Austrian democracy, wage a war of words against Austrofascism, and promulgate additional trade sanctions. Privately, we provide financial and various forms of "support" to our comrades in Austria in their struggle against dictatorship.
 
@@ -190,7 +190,7 @@ In public, we provide verbal backing to Austrian democracy, wage a war of words 
 @concordat_negotiate
 title: Negotiate a Concordat between the Germany and the Vatican.
 view-if: prussian_concordat = 1 and reichskonkordat = 0 and reichskonkordat_progress < 4
-on-arrival: reichskonkordat_progress += 2; reichskonkordat_progress -= 1 if abortion_rights; reichskonkordat_progress -= 1 if family_law; z_relation += 3*(1-dissent)
+on-arrival: reichskonkordat_progress += 2000; reichskonkordat_progress -= 1 if abortion_rights; reichskonkordat_progress += 100 if family_law; z_relation += 3*(1-dissent)
 
 The Roman Catholic Church is interested in furthering relations with the German Republic, seeing us as preferable to the old anti-Catholic policies of the Empire. We are working towards the signing of a Concordat, an agreement between the Vatican and the Republic that formally recognizes the Church's rights and interests in the country. The Center Party is especially interested in making this agreement.
 
@@ -212,7 +212,7 @@ subtitle: Is a "United States of Europe" possible?
 unavailable-subtitle: [? if west_relation < 5 : Our relations with the West are not good enough. ?] [? if east_relation < 4 : Our relations with the East are not good enough. ?]
 view-if: reparations <= -2 and eu_progress < 2
 choose-if: west_relation >= 5 and east_relation >= 4
-on-arrival: eu_progress += 1; west_relation += 1
+on-arrival: eu_progress += 100; west_relation += 100
 
 Forming a "United States of Europe" has long been part of the Social Democratic foreign program. Finally, we are taking steps towards it. Given our positive relations with the other countries of Europe, we can begin to hold multilateral negotiations for more European federalism. It will take time to hammer out the exact shape of this future "European Union", however.
 
